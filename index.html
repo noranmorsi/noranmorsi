@@ -263,31 +263,19 @@
 
     .project-thumb {
       aspect-ratio: 4 / 3;
+      position: relative;
+      overflow: hidden;
       background:
         linear-gradient(135deg, rgba(255,255,255,0.55), rgba(0,0,0,0.02)),
         linear-gradient(135deg, #d8c8b0, #c7d4d0 55%, #e6ddd0);
-      position: relative;
-      overflow: hidden;
     }
 
-    .project-thumb::after {
-      content: "";
-      position: absolute;
-      left: 1rem;
-      bottom: 1rem;
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: rgba(31, 27, 24, 0.7);
-      background: rgba(251, 248, 242, 0.78);
-      padding: 0.35rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(31, 27, 24, 0.08);
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
-    
-    <div class="project-thumb">
-  <img src="images/ramadan-nyc.jpg" alt="Ramadan in New York City illustration">
-</div>
 
     .project-info {
       padding: 1rem 1rem 1.15rem;
@@ -319,16 +307,15 @@
       gap: 2rem;
       align-items: start;
     }
-<style>
-  .portrait-image {
-    width: 100%;
-    height: auto;
-    border-radius: 16px;
-    border: 1px solid #d8cfc2;
-    box-shadow: 0 10px 30px rgba(31, 27, 24, 0.06);
-    object-fit: cover;
-  }
-</style>
+
+    .portrait-image {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      border: 1px solid #d8cfc2;
+      box-shadow: 0 10px 30px rgba(31, 27, 24, 0.06);
+      object-fit: cover;
+    }
 
     .about-copy p,
     .contact-copy p {
@@ -342,98 +329,6 @@
       letter-spacing: 0.12em;
       font-size: 0.76rem;
       margin-bottom: 0.85rem;
-    }
-
-    .video-list,
-    .audio-list,
-    .data-card {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .entry-card {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 1.25rem;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1rem;
-      box-shadow: var(--shadow);
-    }
-
-    .entry-media {
-      min-height: 160px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.5), rgba(0,0,0,0.03)),
-        linear-gradient(140deg, #d8c8b0, #dfe7e2 60%, #ece1d3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .entry-media::after {
-      content: "Placeholder";
-      position: absolute;
-      left: 0.9rem;
-      bottom: 0.9rem;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: rgba(31, 27, 24, 0.75);
-      background: rgba(251, 248, 242, 0.82);
-      padding: 0.3rem 0.55rem;
-      border-radius: 999px;
-    }
-
-    .entry-content h4 {
-      margin: 0 0 0.35rem;
-      font-size: 1.25rem;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-    }
-
-    .entry-meta {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 0.85rem;
-    }
-
-    .entry-content p {
-      margin: 0 0 0.85rem;
-    }
-
-    .entry-content ul {
-      margin: 0.5rem 0 0.9rem 1.1rem;
-      padding: 0;
-    }
-
-    .entry-content li {
-      margin-bottom: 0.35rem;
-    }
-
-    .quote-block {
-      display: grid;
-      gap: 0.85rem;
-      margin-top: 1rem;
-    }
-
-    blockquote {
-      margin: 0;
-      padding: 1rem 1rem 1rem 1.1rem;
-      border-left: 3px solid var(--accent);
-      background: var(--bg-soft);
-      border-radius: 0 12px 12px 0;
-      color: #2a2521;
-    }
-
-    blockquote cite {
-      display: block;
-      margin-top: 0.5rem;
-      font-style: normal;
-      color: var(--muted);
-      font-size: 0.92rem;
     }
 
     .contact-link {
@@ -466,7 +361,6 @@
         gap: 0.75rem;
       }
 
-      .entry-card,
       .about-grid,
       .contact-grid {
         grid-template-columns: 1fr;
@@ -525,7 +419,7 @@
     </div>
     <nav class="mobile-menu" id="mobileMenu">
       <a href="#home">Projects</a>
-      <a href="#about">About</a> 
+      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -541,7 +435,6 @@
         <nav class="nav" aria-label="Sidebar navigation">
           <a href="#home">Projects</a>
           <a href="#about">About</a>
-   
           <a href="#contact">Contact</a>
         </nav>
       </div>
@@ -580,7 +473,9 @@
 
         <div class="project-grid" id="projectGrid">
           <a class="project-card" href="#" data-category="illustration">
-            <div class="project-thumb"></div>
+            <div class="project-thumb">
+              <img src="images/ramadan-nyc.jpg" alt="Ramadan in New York City illustration" />
+            </div>
             <div class="project-info">
               <div class="project-meta"><span>Illustration</span><span>2025</span></div>
               <h4 class="project-title">Ramadan in New York City</h4>
@@ -588,7 +483,9 @@
           </a>
 
           <a class="project-card" href="#" data-category="illustration">
-            <div class="project-thumb"></div>
+            <div class="project-thumb">
+              <img src="images/cairo.jpg" alt="Cairo illustration" />
+            </div>
             <div class="project-info">
               <div class="project-meta"><span>Illustration</span><span>2024</span></div>
               <h4 class="project-title">Cairo</h4>
@@ -596,7 +493,9 @@
           </a>
 
           <a class="project-card" href="#" data-category="illustration">
-            <div class="project-thumb"></div>
+            <div class="project-thumb">
+              <img src="images/global-voices.jpg" alt="Global Voices illustration" />
+            </div>
             <div class="project-info">
               <div class="project-meta"><span>Illustration</span><span>2023</span></div>
               <h4 class="project-title">Global Voices</h4>
@@ -735,7 +634,7 @@
         </div>
 
         <div class="about-grid">
-          <img class="portrait-image" src="images/Portrait.png" alt="Portrait of Noran Morsi">
+          <img class="portrait-image" src="images/Portrait.png" alt="Portrait of Noran Morsi" />
           <div class="about-copy">
             <div class="kicker">Biography</div>
             <p><strong>Noran is a New York-based visual journalist from Cairo.</strong></p>
@@ -754,7 +653,6 @@
         </div>
       </section>
 
-
       <section id="contact" aria-labelledby="contact-title">
         <div class="section-heading">
           <h3 id="contact-title">Contact</h3>
@@ -764,12 +662,10 @@
         </div>
 
         <div class="contact-grid">
-            <img class="portrait-image" src="images/Portrait.png" alt="Portrait of Noran Morsi">
+          <img class="portrait-image" src="images/Portrait.png" alt="Portrait of Noran Morsi" />
           <div class="contact-copy">
             <div class="kicker">Email</div>
-            <p>
-              The best way to get in touch is by email.
-            </p>
+            <p>The best way to get in touch is by email.</p>
             <a class="contact-link" href="mailto:noranmorsi@gmail.com">noranmorsi@gmail.com</a>
           </div>
         </div>
