@@ -5,799 +5,297 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Noran Morsi — Visual Journalist</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #f8f1e8;
-      --bg-soft: #f2e3d5;
-      --paper: #fff9f2;
       --text: #2d211c;
       --muted: #7d675d;
       --line: #dfcdbb;
-      --rose: #c97b7b;
-      --gold: #d6a85f;
-      --sage: #8ca38f;
-      --sky: #92aecd;
       --berry: #8f5873;
-      --shadow: 0 10px 30px rgba(62, 38, 27, 0.06);
-      --sidebar-width: 250px;
-      --radius: 18px;
-      --content-width: 1280px;
+      --rose: #c97b7b;
+      --sky: #92aecd;
+      --sage: #8ca38f;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: 'Fraunces', serif;
       background:
-        radial-gradient(circle at top left, rgba(201, 123, 123, 0.10), transparent 28%),
-        radial-gradient(circle at top right, rgba(146, 174, 205, 0.14), transparent 30%),
-        radial-gradient(circle at bottom left, rgba(140, 163, 143, 0.10), transparent 24%),
+        radial-gradient(circle at top left, rgba(201, 123, 123, 0.1), transparent 30%),
+        radial-gradient(circle at top right, rgba(146, 174, 205, 0.12), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(140, 163, 143, 0.1), transparent 30%),
         var(--bg);
       color: var(--text);
-      line-height: 1.6;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
+      line-height: 1.65;
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
-    .page {
-      max-width: var(--content-width);
-      margin: 0 auto;
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
     }
 
     .layout {
       display: grid;
-      grid-template-columns: var(--sidebar-width) 1fr;
+      grid-template-columns: 220px 1fr;
       min-height: 100vh;
     }
 
     .sidebar {
+      padding: 2rem;
+      border-right: 1px solid var(--line);
       position: sticky;
       top: 0;
       height: 100vh;
-      padding: 2.5rem 1.75rem;
-      border-right: 1px solid rgba(125, 103, 93, 0.16);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: rgba(248, 241, 232, 0.72);
-      backdrop-filter: blur(10px);
     }
 
-    .brand h1 {
+    .sidebar h1 {
+      font-size: 2rem;
       margin: 0;
-      font-size: 2.2rem;
-      line-height: 0.96;
-      font-weight: 700;
-      letter-spacing: -0.04em;
     }
 
-    .brand p {
-      margin: 0.8rem 0 0;
+    .sidebar p {
       color: var(--muted);
-      font-size: 0.98rem;
-      max-width: 12rem;
+      margin-top: 0.5rem;
     }
 
     .nav {
-      margin-top: 2.25rem;
+      margin-top: 2rem;
     }
 
     .nav a {
       display: block;
-      width: fit-content;
-      padding: 0.35rem 0;
+      margin-bottom: 0.5rem;
       color: var(--muted);
-      font-size: 1rem;
-      transition: color 0.2s ease, transform 0.2s ease;
     }
 
-    .nav a:hover,
-    .nav a:focus {
-      color: var(--berry);
-      transform: translateX(3px);
-    }
-
-    .sidebar-footer {
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .sidebar-footer span {
-      display: inline-block;
-      padding: 0.18rem 0.55rem;
-      border-radius: 999px;
-      background: rgba(201, 123, 123, 0.12);
+    .nav a:hover {
       color: var(--berry);
     }
 
     .main {
-      padding: 2rem 2.5rem 4rem;
-    }
-
-    .mobile-header {
-      display: none;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(248, 241, 232, 0.94);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(125, 103, 93, 0.14);
-      padding: 1rem 1.25rem;
-    }
-
-    .mobile-topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .mobile-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-    }
-
-    .menu-toggle {
-      appearance: none;
-      border: 1px solid rgba(125, 103, 93, 0.22);
-      background: var(--paper);
-      color: var(--text);
-      padding: 0.7rem 0.95rem;
-      border-radius: 999px;
-      font: inherit;
-      cursor: pointer;
-    }
-
-    .mobile-menu {
-      display: none;
-      padding-top: 0.9rem;
-    }
-
-    .mobile-menu.open {
-      display: block;
-    }
-
-    .mobile-menu a {
-      display: block;
-      padding: 0.75rem 0;
-      border-top: 1px solid rgba(125, 103, 93, 0.14);
-      color: var(--muted);
-    }
-
-    .hero {
-      padding: 1.5rem 0 3rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-      color: var(--berry);
-      font-style: italic;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      background: rgba(201, 123, 123, 0.12);
+      padding: 2rem;
     }
 
     .hero h2 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
       margin: 0;
-      font-size: clamp(3rem, 7vw, 6rem);
-      line-height: 0.92;
-      letter-spacing: -0.055em;
-      max-width: 860px;
+      letter-spacing: -0.05em;
     }
 
     .hero p {
-      max-width: 700px;
-      margin: 1.25rem 0 0;
       color: var(--muted);
-      font-size: 1.08rem;
-    }
-
-    section {
-      padding: 2.75rem 0;
-      border-top: 1px solid rgba(125, 103, 93, 0.14);
-    }
-
-    .section-heading {
-      display: grid;
-      grid-template-columns: minmax(160px, 220px) 1fr;
-      gap: 2rem;
-      margin-bottom: 1.75rem;
-      align-items: start;
-    }
-
-    .section-heading h3 {
-      margin: 0;
-      font-size: 1.65rem;
-      letter-spacing: -0.03em;
-    }
-
-    .section-heading p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 720px;
+      max-width: 600px;
     }
 
     .filters {
+      margin: 2rem 0;
       display: flex;
-      flex-wrap: wrap;
       gap: 1rem;
-      margin: 0 0 2rem;
+      flex-wrap: wrap;
     }
 
     .filter-btn {
+      background: none;
       border: none;
-      background: transparent;
-      padding: 0.1rem 0;
-      font: inherit;
-      font-size: 1rem;
-      color: var(--muted);
-      cursor: pointer;
       border-bottom: 1px solid transparent;
-      transition: color 0.2s ease, border-color 0.2s ease;
+      cursor: pointer;
+      color: var(--muted);
+      font-family: inherit;
     }
 
-    .filter-btn:hover,
-    .filter-btn:focus,
-    .filter-btn.active {
+    .filter-btn.active,
+    .filter-btn:hover {
       color: var(--berry);
       border-color: var(--berry);
     }
 
-    .project-grid {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.4rem;
-      align-items: start;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
     }
 
-    .project-card {
-      display: block;
-      transition: transform 0.22s ease, opacity 0.22s ease;
+    .card {
+      transition: transform 0.2s ease;
     }
 
-    .project-card:hover {
+    .card:hover {
       transform: translateY(-3px);
-      opacity: 0.96;
     }
 
-    .project-thumb {
+    .thumb {
+      border-radius: 20px;
       overflow: hidden;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.4), rgba(0,0,0,0.03)),
-        linear-gradient(160deg, #ecd8c8, #f3eadf 45%, #d6dfe8 100%);
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      position: relative;
-    }
-
-    .project-card:nth-child(3n + 1) .project-thumb {
       aspect-ratio: 4 / 5;
+      background: #eee;
     }
 
-    .project-card:nth-child(3n + 2) .project-thumb {
-      aspect-ratio: 4 / 3;
-    }
-
-    .project-card:nth-child(3n) .project-thumb {
+    .card:nth-child(3n) .thumb {
       aspect-ratio: 1 / 1;
     }
 
-    .project-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.35s ease;
-      filter: saturate(0.96) contrast(0.98);
-    }
-
-    .project-card:hover .project-thumb img {
-      transform: scale(1.02);
-    }
-
-    .project-thumb.placeholder::after {
-      content: "Image coming soon";
-      position: absolute;
-      left: 1rem;
-      bottom: 1rem;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(45, 33, 28, 0.72);
-      background: rgba(255, 249, 242, 0.82);
-      padding: 0.35rem 0.55rem;
-      border-radius: 999px;
-    }
-
-    .project-info {
-      padding: 0.85rem 0.2rem 0;
-    }
-
-    .project-title {
-      margin: 0;
-      font-size: 1.08rem;
-      line-height: 1.2;
-      font-weight: 400;
-    }
-
-    .project-meta {
-      margin-top: 0.25rem;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: minmax(280px, 380px) 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .portrait-wrap {
-      position: relative;
-    }
-
-    .portrait-wrap::before {
-      content: "";
-      position: absolute;
-      inset: -12px 18px 18px -12px;
-      background: linear-gradient(135deg, rgba(201, 123, 123, 0.14), rgba(146, 174, 205, 0.14), rgba(140, 163, 143, 0.12));
-      border-radius: 28px 18px 26px 16px;
-      z-index: 0;
-    }
-
-    .portrait-image {
-      position: relative;
-      z-index: 1;
-      width: 100%;
+    .card:nth-child(3n+1) .thumb {
       aspect-ratio: 4 / 5;
-      object-fit: cover;
-      border-radius: 28px 18px 30px 16px;
-      box-shadow: 0 18px 40px rgba(62, 38, 27, 0.1);
-      background: var(--paper);
     }
 
-    .about-copy {
-      max-width: 640px;
+    .card:nth-child(3n+2) .thumb {
+      aspect-ratio: 4 / 3;
     }
 
-    .about-copy p,
-    .contact-copy p {
-      margin-top: 0;
-      margin-bottom: 1rem;
-    }
-
-    .kicker {
-      color: var(--berry);
-      font-style: italic;
-      font-size: 0.98rem;
-      margin-bottom: 0.85rem;
-    }
-
-    .contact-box {
-      max-width: 560px;
-      padding: 1.4rem 1.5rem;
-      border-radius: 24px;
-      background: rgba(255, 249, 242, 0.72);
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(125, 103, 93, 0.12);
-    }
-
-    .contact-link {
-      display: inline-block;
-      padding: 0.85rem 1.15rem;
-      border-radius: 999px;
-      background: var(--berry);
-      color: #fff7f0;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-      margin-top: 0.4rem;
-    }
-
-    .contact-link:hover {
-      transform: translateY(-2px);
-      opacity: 0.95;
-    }
-
-    .footer {
-      padding: 2.5rem 0 0;
+    .meta {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
       color: var(--muted);
-      font-size: 0.94rem;
     }
 
-    @media (max-width: 1100px) {
-      .project-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .section-heading,
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
-      .about-grid {
-        gap: 2rem;
-      }
+    .about {
+      margin-top: 4rem;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 2rem;
     }
 
-    @media (max-width: 860px) {
+    .portrait {
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .contact {
+      margin-top: 4rem;
+    }
+
+    .email {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1rem;
+      background: var(--berry);
+      color: white;
+      border-radius: 999px;
+    }
+
+    @media (max-width: 900px) {
       .layout {
         grid-template-columns: 1fr;
       }
 
       .sidebar {
-        display: none;
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
       }
 
-      .mobile-header {
-        display: block;
-      }
-
-      .main {
-        padding: 1.25rem 1.25rem 3rem;
-      }
-
-      .hero {
-        padding-top: 0.75rem;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .project-grid {
+      .grid {
         grid-template-columns: 1fr;
       }
 
-      .project-card .project-thumb,
-      .project-card:nth-child(3n + 1) .project-thumb,
-      .project-card:nth-child(3n + 2) .project-thumb,
-      .project-card:nth-child(3n) .project-thumb {
-        aspect-ratio: 4 / 5;
-      }
-
-      .hero h2 {
-        font-size: 2.8rem;
-      }
-
-      .filters {
-        gap: 0.75rem 1rem;
+      .about {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
+
 <body>
-  <div class="mobile-header">
-    <div class="mobile-topbar">
-      <div class="mobile-title">Noran Morsi</div>
-      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
-    </div>
-    <nav class="mobile-menu" id="mobileMenu">
-      <a href="#home">Projects</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
+  <div class="layout">
+    <aside class="sidebar">
+      <h1>Noran Morsi</h1>
+      <p>New York-based visual journalist from Cairo.</p>
 
-  <div class="page">
-    <div class="layout">
-      <aside class="sidebar">
+      <nav class="nav">
+        <a href="#home">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <section class="hero" id="home">
+        <h2>Stories in color, texture, and image.</h2>
+        <p>A portfolio of illustration, video, audio, and visual journalism.</p>
+      </section>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="illustration">Illustration</button>
+        <button class="filter-btn" data-filter="video">Video</button>
+        <button class="filter-btn" data-filter="audio">Audio</button>
+        <button class="filter-btn" data-filter="data">Data</button>
+      </div>
+
+      <div class="grid">
+        <a class="card" data-category="illustration">
+          <div class="thumb"><img src="images/ramadan-nyc.jpg"></div>
+          <div>Ramadan in New York City</div>
+          <div class="meta">Illustration, 2025</div>
+        </a>
+
+        <a class="card" data-category="illustration">
+          <div class="thumb"><img src="images/cairo.jpg"></div>
+          <div>Cairo</div>
+          <div class="meta">Illustration, 2024</div>
+        </a>
+
+        <a class="card" data-category="illustration">
+          <div class="thumb"><img src="images/global-voices.jpg"></div>
+          <div>Global Voices</div>
+          <div class="meta">Illustration, 2023</div>
+        </a>
+      </div>
+
+      <section class="about" id="about">
+        <div class="portrait">
+          <img src="images/Portrait.png" alt="Portrait">
+        </div>
+
         <div>
-          <div class="brand">
-            <h1>Noran Morsi</h1>
-            <p>Noran is a New York-based visual journalist from Cairo.</p>
-          </div>
-
-          <nav class="nav" aria-label="Sidebar navigation">
-            <a href="#home">Projects</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-          </nav>
-        </div>
-
-        <div class="sidebar-footer">
-          <span>New York / Cairo</span>
-        </div>
-      </aside>
-
-      <main class="main">
-        <header class="hero" id="home">
-          <div class="eyebrow">visual journalism, illustration, audio, and production</div>
-          <h2>Stories in color, texture, voice, and image.</h2>
+          <p><strong>Noran is a New York-based visual journalist from Cairo.</strong></p>
           <p>
-            A portfolio of illustration, video, audio, and visual journalism by Noran Morsi —
-            a New York-based visual journalist from Cairo.
+            Noran Morsi is a visual journalist and producer bringing together illustration,
+            storytelling, and media production across formats.
           </p>
-        </header>
-
-        <section aria-labelledby="projects-title">
-          <div class="section-heading">
-            <h3 id="projects-title">Projects</h3>
-            <p>
-              A cross-disciplinary archive of editorial illustration, television production,
-              podcasts, and data storytelling.
-            </p>
-          </div>
-
-          <div class="filters" aria-label="Project filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="illustration">Illustration</button>
-            <button class="filter-btn" data-filter="video">TV / Video</button>
-            <button class="filter-btn" data-filter="audio">Podcast / Audio</button>
-            <button class="filter-btn" data-filter="data">Data Visualization</button>
-          </div>
-
-          <div class="project-grid" id="projectGrid">
-            <a class="project-card" href="projects/ramadan-in-new-york-city.html" data-category="illustration">
-              <div class="project-thumb">
-                <img src="images/ramadan-nyc.jpg" alt="Ramadan in New York City illustration">
-              </div>
-              <div class="project-info">
-                <h4 class="project-title">Ramadan in New York City</h4>
-                <div class="project-meta">Illustration, 2025</div>
-              </div>
-            </a>
-
-            <a class="project-card" href="projects/cairo.html" data-category="illustration">
-              <div class="project-thumb">
-                <img src="images/cairo.jpg" alt="Cairo illustration">
-              </div>
-              <div class="project-info">
-                <h4 class="project-title">Cairo</h4>
-                <div class="project-meta">Illustration, 2024</div>
-              </div>
-            </a>
-
-            <a class="project-card" href="projects/global-voices.html" data-category="illustration">
-              <div class="project-thumb">
-                <img src="images/global-voices.jpg" alt="Global Voices illustration">
-              </div>
-              <div class="project-info">
-                <h4 class="project-title">Global Voices</h4>
-                <div class="project-meta">Illustration, 2023</div>
-              </div>
-            </a>
-
-            <a class="project-card" href="projects/new-york-city.html" data-category="illustration">
-              <div class="project-thumb placeholder"></div>
-              <div class="project-info">
-                <h4 class="project-title">New York City</h4>
-                <div class="project-meta">Illustration, 2025</div>
-              </div>
-            </a>
-
-            <a class="project-card" href="projects/60-hours-in-europe-comic.html" data-category="illustration">
-              <div class="project-thumb placeholder"></div>
-              <div class="project-info">
-                <h4 class="project-title">60 Hours in Europe Comic</h4>
-                <div class="project-meta">Illustration, 2023</div>
-              </div>
-            </a>
-
-            <a class="project-card" href="projects/comics.html" data-category="illustration">
-              <div class="project-thumb placeholder"></div>
-              <div class="project-info">
-                <h4 class="project-title">Comics</h4>
-                <div class="project-meta">Illustration, 2023</div>
-              </div>
-            </a>
-
-            <a class="project-card" href="projects/atlas-obscura.html" data-category="illustration">
-              <div class="project-thumb placeholder"></div>
-              <div class="project-info">
-                <h4 class="project-title">Atlas Obscura</h4>
-                <div class="project-meta">Illustration, 2024</div>
-              </div>
-            </a>
-
-            <a class="project-card" href="projects/nyc-stores.html" data-category="illustration">
-              <div class="project-thumb placeholder"></div>
-              <div class="project-info">
-                <h4 class="project-title">NYC Stores</h4>
-                <div class="project-meta">Illustration, 2025</div>
-              </div>
-            </a>
-
-            <a class="project-card" href="projects/ramy-editorial.html" data-category="illustration">
-              <div class="project-thumb placeholder"></div>
-              <div class="project-info">
-                <h4 class="project-title">Ramy Editorial</h4>
-                <div class="project-meta">Illustration, 2022</div>
-              </div>
-            </a>
-
-            <a class="project-card" href="projects/center-for-arab-narratives.html" data-category="illustration">
-              <div class="project-thumb placeholder"></div>
-              <div class="project-info">
-                <h4 class="project-title">Center for Arab Narratives</h4>
-                <div class="project-meta">Illustration, 2024</div>
-              </div>
-            </a>
-
-            <a class="project-card" href="projects/commissions.html" data-category="illustration">
-              <div class="project-thumb placeholder"></div>
-              <div class="project-info">
-                <h4 class="project-title">Commissions</h4>
-                <div class="project-meta">Illustration, 2021</div>
-              </div>
-            </a>
-
-            <a class="project-card" href="projects/editorial-egyptian-streets.html" data-category="illustration">
-              <div class="project-thumb placeholder"></div>
-              <div class="project-info">
-                <h4 class="project-title">Editorial - Egyptian Streets</h4>
-                <div class="project-meta">Illustration, 2020</div>
-              </div>
-            </a>
-
-            <a class="project-card" href="projects/portraits.html" data-category="illustration">
-              <div class="project-thumb placeholder"></div>
-              <div class="project-info">
-                <h4 class="project-title">Portraits</h4>
-                <div class="project-meta">Illustration, 2020</div>
-              </div>
-            </a>
-
-            <a class="project-card" href="projects/the-drew-barrymore-show.html" data-category="video">
-              <div class="project-thumb placeholder"></div>
-              <div class="project-info">
-                <h4 class="project-title">The Drew Barrymore Show</h4>
-                <div class="project-meta">TV / Video, 2025</div>
-              </div>
-            </a>
-
-            <a class="project-card" href="projects/inside-edition.html" data-category="video">
-              <div class="project-thumb placeholder"></div>
-              <div class="project-info">
-                <h4 class="project-title">Inside Edition</h4>
-                <div class="project-meta">TV / Video</div>
-              </div>
-            </a>
-
-            <a class="project-card" href="projects/the-late-show-with-stephen-colbert.html" data-category="video">
-              <div class="project-thumb placeholder"></div>
-              <div class="project-info">
-                <h4 class="project-title">The Late Show with Stephen Colbert</h4>
-                <div class="project-meta">TV / Video</div>
-              </div>
-            </a>
-
-            <a class="project-card" href="projects/the-egyptian-streets-podcast.html" data-category="audio">
-              <div class="project-thumb placeholder"></div>
-              <div class="project-info">
-                <h4 class="project-title">The Egyptian Streets Podcast</h4>
-                <div class="project-meta">Podcast / Audio, 2021</div>
-              </div>
-            </a>
-
-            <a class="project-card" href="projects/bloomberg-africa-business-summit.html" data-category="data">
-              <div class="project-thumb placeholder"></div>
-              <div class="project-info">
-                <h4 class="project-title">Bloomberg Africa Business Summit</h4>
-                <div class="project-meta">Data Visualization, TBD</div>
-              </div>
-            </a>
-          </div>
-        </section>
-
-        <section id="about" aria-labelledby="about-title">
-          <div class="section-heading">
-            <h3 id="about-title">About</h3>
-            <p>
-              A visual journalist and producer working across editorial illustration, live events,
-              television, and audio storytelling.
-            </p>
-          </div>
-
-          <div class="about-grid">
-            <div class="portrait-wrap">
-              <img class="portrait-image" src="images/Portrait.png" alt="Portrait of Noran Morsi">
-            </div>
-
-            <div class="about-copy">
-              <div class="kicker">Biography</div>
-              <p><strong>Noran is a New York-based visual journalist from Cairo.</strong></p>
-              <p>
-                Noran Morsi is a New York-based visual journalist and producer, and brings a diverse
-                blend of creative skills to storytelling. From Cairo, Egypt, she is passionate about
-                journalism, theater, and TV, with a love for illustration.
-              </p>
-              <p>
-                Noran is currently an Editorial Coordinator at Bloomberg Live Experiences, where she
-                brings captivating global events to life, from San Francisco to Johannesburg, New York
-                to Los Angeles.
-              </p>
-              <p>Opinions are my own.</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="contact" aria-labelledby="contact-title">
-          <div class="section-heading">
-            <h3 id="contact-title">Contact</h3>
-            <p>
-              For commissions, collaborations, editorial work, or general inquiries.
-            </p>
-          </div>
-
-          <div class="contact-box">
-            <div class="contact-copy">
-              <div class="kicker">Email</div>
-              <p>The best way to get in touch is by email.</p>
-              <a class="contact-link" href="mailto:noranmorsi@gmail.com">noranmorsi@gmail.com</a>
-            </div>
-          </div>
-        </section>
-
-        <div class="footer">
-          © <span id="year"></span> Noran Morsi. All rights reserved.
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <h3>Contact</h3>
+        <p>For commissions or collaborations:</p>
+        <a class="email" href="mailto:noranmorsi@gmail.com">noranmorsi@gmail.com</a>
+      </section>
+    </main>
   </div>
 
   <script>
-    (function () {
-      const buttons = document.querySelectorAll('.filter-btn');
-      const cards = document.querySelectorAll('.project-card');
-      const menuToggle = document.getElementById('menuToggle');
-      const mobileMenu = document.getElementById('mobileMenu');
-      const mobileLinks = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card');
 
-      buttons.forEach(button => {
-        button.addEventListener('click', function () {
-          const filter = this.getAttribute('data-filter');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
 
-          buttons.forEach(btn => btn.classList.remove('active'));
-          this.classList.add('active');
+        const filter = btn.dataset.filter;
 
-          cards.forEach(card => {
-            const category = card.getAttribute('data-category');
-            const show = filter === 'all' || category === filter;
-            card.classList.toggle('hidden', !show);
-          });
+        cards.forEach(card => {
+          const show = filter === 'all' || card.dataset.category === filter;
+          card.style.display = show ? 'block' : 'none';
         });
       });
-
-      if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', function () {
-          const isOpen = mobileMenu.classList.toggle('open');
-          this.setAttribute('aria-expanded', String(isOpen));
-        });
-
-        mobileLinks.forEach(link => {
-          link.addEventListener('click', function () {
-            mobileMenu.classList.remove('open');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          });
-        });
-      }
-
-      const yearEl = document.getElementById('year');
-      if (yearEl) {
-        yearEl.textContent = new Date().getFullYear();
-      }
-    })();
+    });
   </script>
 </body>
 </html>
