@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,17 +7,16 @@
   <title>Noran Morsi — Visual Journalist</title>
   <style>
     :root {
-      --bg: #f4efe6;
-      --bg-soft: #efe8dc;
-      --card: #fbf8f2;
-      --text: #1f1b18;
-      --muted: #6f665d;
-      --line: #d8cfc2;
-      --accent: #2f4f4f;
-      --accent-soft: #dde6e3;
-      --shadow: 0 10px 30px rgba(31, 27, 24, 0.06);
-      --sidebar-width: 260px;
-      --radius: 16px;
+      --bg: #f7f0e7;
+      --bg-soft: #efe3d5;
+      --card: #fcf8f2;
+      --text: #231c19;
+      --muted: #7b6a61;
+      --line: #dccdbd;
+      --accent: #b87872;
+      --shadow: 0 8px 24px rgba(35, 28, 25, 0.04);
+      --sidebar-width: 250px;
+      --radius: 18px;
     }
 
     * {
@@ -55,10 +55,9 @@
       position: sticky;
       top: 0;
       height: 100vh;
-      padding: 2rem 1.5rem;
-      border-right: 1px solid var(--line);
-      background: rgba(244, 239, 230, 0.92);
-      backdrop-filter: blur(8px);
+      padding: 2.4rem 1.7rem 2rem;
+      border-right: 1px solid rgba(35, 28, 25, 0.08);
+      background: rgba(247, 240, 231, 0.86);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -66,43 +65,44 @@
 
     .brand h1 {
       margin: 0;
-      font-size: 1.9rem;
-      line-height: 1.05;
+      font-size: 2.2rem;
+      line-height: 0.95;
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.04em;
     }
 
     .brand p {
-      margin: 0.75rem 0 0;
+      margin: 0.9rem 0 0;
       color: var(--muted);
-      font-size: 0.98rem;
+      font-size: 1rem;
+      max-width: 16rem;
     }
 
     .nav {
-      margin-top: 2rem;
+      margin-top: 2.25rem;
     }
 
     .nav a {
       display: block;
-      padding: 0.55rem 0;
+      padding: 0.35rem 0;
       color: var(--muted);
       transition: color 0.2s ease, transform 0.2s ease;
-      font-size: 0.98rem;
+      font-size: 1rem;
     }
 
     .nav a:hover,
     .nav a:focus {
       color: var(--text);
-      transform: translateX(3px);
+      transform: translateX(2px);
     }
 
     .sidebar-footer {
       color: var(--muted);
-      font-size: 0.92rem;
+      font-size: 0.95rem;
     }
 
     .main {
-      padding: 2rem 2.5rem 4rem;
+      padding: 2.4rem 2.7rem 4rem;
     }
 
     .mobile-header {
@@ -110,9 +110,8 @@
       position: sticky;
       top: 0;
       z-index: 40;
-      background: rgba(244, 239, 230, 0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
+      background: rgba(247, 240, 231, 0.96);
+      border-bottom: 1px solid rgba(35, 28, 25, 0.08);
       padding: 1rem 1.25rem;
     }
 
@@ -126,15 +125,15 @@
     .mobile-title {
       font-size: 1.2rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
     }
 
     .menu-toggle {
       appearance: none;
       border: 1px solid var(--line);
-      background: var(--card);
+      background: transparent;
       color: var(--text);
-      padding: 0.7rem 0.9rem;
+      padding: 0.65rem 0.95rem;
       border-radius: 999px;
       font: inherit;
       cursor: pointer;
@@ -142,7 +141,7 @@
 
     .mobile-menu {
       display: none;
-      padding-top: 1rem;
+      padding-top: 0.85rem;
     }
 
     .mobile-menu.open {
@@ -151,43 +150,43 @@
 
     .mobile-menu a {
       display: block;
-      padding: 0.7rem 0;
-      border-top: 1px solid var(--line);
+      padding: 0.75rem 0;
+      border-top: 1px solid rgba(35, 28, 25, 0.08);
       color: var(--muted);
     }
 
     .hero {
-      padding: 1rem 0 2.5rem;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 2.5rem;
+      padding: 0.5rem 0 3rem;
+      margin-bottom: 2.8rem;
+      border-bottom: 1px solid rgba(35, 28, 25, 0.08);
     }
 
     .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.75rem;
+      font-size: 0.98rem;
+      font-style: italic;
       color: var(--muted);
       margin-bottom: 1rem;
     }
 
     .hero h2 {
       margin: 0;
-      font-size: clamp(2.1rem, 5vw, 4.4rem);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-      max-width: 900px;
+      font-size: clamp(2.9rem, 7vw, 5.7rem);
+      line-height: 0.92;
+      letter-spacing: -0.05em;
+      max-width: 760px;
+      font-weight: 700;
     }
 
     .hero p {
-      max-width: 720px;
-      margin: 1.2rem 0 0;
+      max-width: 700px;
+      margin: 1.35rem 0 0;
       color: var(--muted);
-      font-size: 1.05rem;
+      font-size: 1.08rem;
     }
 
     section {
-      padding: 2.5rem 0;
-      border-bottom: 1px solid var(--line);
+      padding: 2.8rem 0;
+      border-bottom: 1px solid rgba(35, 28, 25, 0.08);
     }
 
     section:last-of-type {
@@ -196,104 +195,116 @@
 
     .section-heading {
       display: grid;
-      grid-template-columns: minmax(180px, 220px) 1fr;
+      grid-template-columns: minmax(160px, 210px) 1fr;
       gap: 2rem;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.8rem;
       align-items: start;
     }
 
     .section-heading h3 {
       margin: 0;
       font-size: 1.5rem;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
+      font-weight: 700;
     }
 
     .section-heading p {
       margin: 0;
       color: var(--muted);
-      max-width: 760px;
+      max-width: 680px;
     }
 
     .filters {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      margin: 0 0 1.8rem;
+      gap: 1rem;
+      margin: 0 0 2.1rem;
     }
 
     .filter-btn {
-      border: 1px solid var(--line);
+      border: none;
+      border-bottom: 1px solid transparent;
       background: transparent;
-      padding: 0.7rem 1rem;
-      border-radius: 999px;
-      font: inherit;
+      padding: 0;
       color: var(--muted);
+      font: inherit;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: color 0.2s ease, border-color 0.2s ease;
     }
 
     .filter-btn:hover,
     .filter-btn:focus,
     .filter-btn.active {
-      background: var(--text);
-      color: var(--bg);
+      background: transparent;
+      color: var(--text);
       border-color: var(--text);
     }
 
     .project-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.25rem;
+      gap: 1.6rem 1.2rem;
+      align-items: start;
     }
 
     .project-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      display: block;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      overflow: visible;
+      box-shadow: none;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
     .project-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 35px rgba(31, 27, 24, 0.09);
-      border-color: #c8bdaf;
+      transform: translateY(-2px);
+      opacity: 0.93;
+    }
+
+    .project-card:nth-child(3n) .project-thumb {
+      aspect-ratio: 4 / 5;
+    }
+
+    .project-card:nth-child(3n + 1) .project-thumb {
+      aspect-ratio: 4 / 3;
+    }
+
+    .project-card:nth-child(3n + 2) .project-thumb {
+      aspect-ratio: 1 / 1;
     }
 
     .project-thumb {
-      aspect-ratio: 4 / 3;
-      position: relative;
       overflow: hidden;
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.55), rgba(0,0,0,0.02)),
-        linear-gradient(135deg, #d8c8b0, #c7d4d0 55%, #e6ddd0);
+        linear-gradient(135deg, rgba(255,255,255,0.45), rgba(0,0,0,0.03)),
+        linear-gradient(140deg, #d8c8b0, #d6ddd8 56%, #eadfce);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 0.75rem;
     }
 
     .project-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
+      filter: saturate(0.96) contrast(0.98);
     }
 
     .project-info {
-      padding: 1rem 1rem 1.15rem;
-    }
-
-    .project-meta {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 0.45rem;
+      padding-right: 0.25rem;
     }
 
     .project-title {
-      margin: 0;
-      font-size: 1.12rem;
-      line-height: 1.2;
+      margin: 0 0 0.2rem;
+      font-size: 1.02rem;
+      line-height: 1.25;
+      font-weight: 400;
+    }
+
+    .project-meta {
+      color: var(--muted);
+      font-size: 0.9rem;
     }
 
     .hidden {
@@ -303,52 +314,64 @@
     .about-grid,
     .contact-grid {
       display: grid;
-      grid-template-columns: minmax(240px, 320px) 1fr;
-      gap: 2rem;
+      grid-template-columns: minmax(260px, 380px) 1fr;
+      gap: 3rem;
       align-items: start;
+    }
+
+    .portrait-wrap {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: 24px 18px 28px 16px;
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(140deg, rgba(255,255,255,0.45), rgba(0,0,0,0.03)),
+        linear-gradient(160deg, #d9cdbf, #efe8dc 55%, #cbd7d2);
     }
 
     .portrait-image {
       width: 100%;
-      height: auto;
-      border-radius: 16px;
-      border: 1px solid #d8cfc2;
-      box-shadow: 0 10px 30px rgba(31, 27, 24, 0.06);
+      height: 100%;
       object-fit: cover;
+      filter: saturate(0.96) contrast(0.98);
+    }
+
+    .about-copy,
+    .contact-copy {
+      max-width: 620px;
     }
 
     .about-copy p,
     .contact-copy p {
       margin-top: 0;
       margin-bottom: 1rem;
+      font-size: 1.04rem;
     }
 
     .kicker {
       color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.76rem;
-      margin-bottom: 0.85rem;
+      font-style: italic;
+      font-size: 0.96rem;
+      margin-bottom: 0.9rem;
     }
 
     .contact-link {
       display: inline-block;
-      padding: 0.9rem 1.15rem;
-      border: 1px solid var(--text);
-      border-radius: 999px;
-      transition: all 0.2s ease;
-      margin-top: 0.5rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--text);
+      transition: opacity 0.2s ease;
+      margin-top: 0.4rem;
+      font-size: 1.05rem;
     }
 
     .contact-link:hover {
-      background: var(--text);
-      color: var(--bg);
+      opacity: 0.7;
     }
 
     .footer {
       padding: 2rem 0 0;
       color: var(--muted);
-      font-size: 0.94rem;
+      font-size: 0.95rem;
     }
 
     @media (max-width: 1100px) {
@@ -364,6 +387,11 @@
       .about-grid,
       .contact-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .portrait-wrap {
+        max-width: 360px;
       }
     }
 
@@ -381,30 +409,26 @@
       }
 
       .main {
-        padding: 1.25rem 1.25rem 3rem;
+        padding: 1.3rem 1.25rem 3rem;
       }
 
       .hero {
-        padding-top: 0.5rem;
+        padding-top: 0.6rem;
       }
     }
 
     @media (max-width: 640px) {
       .project-grid {
         grid-template-columns: 1fr;
+        gap: 1.4rem;
       }
 
       .hero h2 {
-        font-size: 2.35rem;
+        font-size: 2.55rem;
       }
 
       .filters {
-        gap: 0.55rem;
-      }
-
-      .filter-btn {
-        width: 100%;
-        text-align: center;
+        gap: 0.9rem;
       }
     }
   </style>
@@ -418,7 +442,7 @@
       </button>
     </div>
     <nav class="mobile-menu" id="mobileMenu">
-      <a href="#home">Projects</a>
+      <a href="#home">Work</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -429,37 +453,36 @@
       <div>
         <div class="brand">
           <h1>Noran Morsi</h1>
-          <p>Noran is a New York-based visual journalist from Cairo.</p>
+          <p>visual journalist, illustrator, producer</p>
         </div>
 
         <nav class="nav" aria-label="Sidebar navigation">
-          <a href="#home">Projects</a>
+          <a href="#home">Work</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </nav>
       </div>
 
       <div class="sidebar-footer">
-        <div>Visual journalism, illustration, audio, and production.</div>
+        <div>New York / Cairo</div>
       </div>
     </aside>
 
     <main class="main">
       <header class="hero" id="home">
-        <div class="eyebrow">Multimedia Visual Journalist</div>
-        <h2>Visual reporting, illustration, audio, and editorial storytelling.</h2>
+        <div class="eyebrow">visual storytelling across image, audio, and screen</div>
+        <h2>Drawn worlds, reported moments, and stories shaped by place.</h2>
         <p>
-          A portfolio of illustration, video, audio, and visual journalism by Noran Morsi —
-          a New York-based visual journalist from Cairo.
+          Noran is a New York-based visual journalist from Cairo. This portfolio gathers illustration,
+          editorial work, production, and narrative projects in one evolving archive.
         </p>
       </header>
 
       <section aria-labelledby="projects-title">
         <div class="section-heading">
-          <h3 id="projects-title">Projects</h3>
+          <h3 id="projects-title">Work</h3>
           <p>
-            A cross-disciplinary archive of editorial illustration, television production,
-            podcasts, and data storytelling. Use the filters to browse by medium.
+            Selected projects across illustration, television, podcasts, and data visualization.
           </p>
         </div>
 
@@ -472,153 +495,183 @@
         </div>
 
         <div class="project-grid" id="projectGrid">
-          <a class="project-card" href="#" data-category="illustration">
+          <a class="project-card" href="projects/ramadan-in-new-york-city.html" data-category="illustration">
             <div class="project-thumb">
               <img src="images/ramadan-nyc.jpg" alt="Ramadan in New York City illustration" />
             </div>
             <div class="project-info">
-              <div class="project-meta"><span>Illustration</span><span>2025</span></div>
               <h4 class="project-title">Ramadan in New York City</h4>
+              <div class="project-meta">Illustration, 2025</div>
             </div>
           </a>
 
-          <a class="project-card" href="#" data-category="illustration">
+          <a class="project-card" href="projects/cairo.html" data-category="illustration">
             <div class="project-thumb">
               <img src="images/cairo.jpg" alt="Cairo illustration" />
             </div>
             <div class="project-info">
-              <div class="project-meta"><span>Illustration</span><span>2024</span></div>
               <h4 class="project-title">Cairo</h4>
+              <div class="project-meta">Illustration, 2024</div>
             </div>
           </a>
 
-          <a class="project-card" href="#" data-category="illustration">
+          <a class="project-card" href="projects/global-voices.html" data-category="illustration">
             <div class="project-thumb">
               <img src="images/global-voices.jpg" alt="Global Voices illustration" />
             </div>
             <div class="project-info">
-              <div class="project-meta"><span>Illustration</span><span>2023</span></div>
               <h4 class="project-title">Global Voices</h4>
+              <div class="project-meta">Illustration, 2023</div>
             </div>
           </a>
 
-          <a class="project-card" href="#" data-category="illustration">
-            <div class="project-thumb"></div>
+          <a class="project-card" href="projects/new-york-city.html" data-category="illustration">
+            <div class="project-thumb">
+              <img src="images/new-york-city.jpg" alt="New York City illustration" />
+            </div>
             <div class="project-info">
-              <div class="project-meta"><span>Illustration</span><span>2025</span></div>
               <h4 class="project-title">New York City</h4>
+              <div class="project-meta">Illustration, 2025</div>
             </div>
           </a>
 
-          <a class="project-card" href="#" data-category="illustration">
-            <div class="project-thumb"></div>
+          <a class="project-card" href="projects/60-hours-in-europe-comic.html" data-category="illustration">
+            <div class="project-thumb">
+              <img src="images/60-hours-in-europe-comic.jpg" alt="60 Hours in Europe Comic illustration" />
+            </div>
             <div class="project-info">
-              <div class="project-meta"><span>Illustration</span><span>2023</span></div>
               <h4 class="project-title">60 Hours in Europe Comic</h4>
+              <div class="project-meta">Illustration, 2023</div>
             </div>
           </a>
 
-          <a class="project-card" href="#" data-category="illustration">
-            <div class="project-thumb"></div>
+          <a class="project-card" href="projects/comics.html" data-category="illustration">
+            <div class="project-thumb">
+              <img src="images/comics.jpg" alt="Comics illustration" />
+            </div>
             <div class="project-info">
-              <div class="project-meta"><span>Illustration</span><span>2023</span></div>
               <h4 class="project-title">Comics</h4>
+              <div class="project-meta">Illustration, 2023</div>
             </div>
           </a>
 
-          <a class="project-card" href="#" data-category="illustration">
-            <div class="project-thumb"></div>
+          <a class="project-card" href="projects/atlas-obscura.html" data-category="illustration">
+            <div class="project-thumb">
+              <img src="images/atlas-obscura.jpg" alt="Atlas Obscura illustration" />
+            </div>
             <div class="project-info">
-              <div class="project-meta"><span>Illustration</span><span>2024</span></div>
               <h4 class="project-title">Atlas Obscura</h4>
+              <div class="project-meta">Illustration, 2024</div>
             </div>
           </a>
 
-          <a class="project-card" href="#" data-category="illustration">
-            <div class="project-thumb"></div>
+          <a class="project-card" href="projects/nyc-stores.html" data-category="illustration">
+            <div class="project-thumb">
+              <img src="images/nyc-stores.jpg" alt="NYC Stores illustration" />
+            </div>
             <div class="project-info">
-              <div class="project-meta"><span>Illustration</span><span>2025</span></div>
               <h4 class="project-title">NYC Stores</h4>
+              <div class="project-meta">Illustration, 2025</div>
             </div>
           </a>
 
-          <a class="project-card" href="#" data-category="illustration">
-            <div class="project-thumb"></div>
+          <a class="project-card" href="projects/ramy-editorial.html" data-category="illustration">
+            <div class="project-thumb">
+              <img src="images/ramy-editorial.jpg" alt="Ramy Editorial illustration" />
+            </div>
             <div class="project-info">
-              <div class="project-meta"><span>Illustration</span><span>2022</span></div>
               <h4 class="project-title">Ramy Editorial</h4>
+              <div class="project-meta">Illustration, 2022</div>
             </div>
           </a>
 
-          <a class="project-card" href="#" data-category="illustration">
-            <div class="project-thumb"></div>
+          <a class="project-card" href="projects/center-for-arab-narratives.html" data-category="illustration">
+            <div class="project-thumb">
+              <img src="images/center-for-arab-narratives.jpg" alt="Center for Arab Narratives illustration" />
+            </div>
             <div class="project-info">
-              <div class="project-meta"><span>Illustration</span><span>2024</span></div>
               <h4 class="project-title">Center for Arab Narratives</h4>
+              <div class="project-meta">Illustration, 2024</div>
             </div>
           </a>
 
-          <a class="project-card" href="#" data-category="illustration">
-            <div class="project-thumb"></div>
+          <a class="project-card" href="projects/commissions.html" data-category="illustration">
+            <div class="project-thumb">
+              <img src="images/commissions.jpg" alt="Commissions illustration" />
+            </div>
             <div class="project-info">
-              <div class="project-meta"><span>Illustration</span><span>2021</span></div>
               <h4 class="project-title">Commissions</h4>
+              <div class="project-meta">Illustration, 2021</div>
             </div>
           </a>
 
-          <a class="project-card" href="#" data-category="illustration">
-            <div class="project-thumb"></div>
+          <a class="project-card" href="projects/editorial-egyptian-streets.html" data-category="illustration">
+            <div class="project-thumb">
+              <img src="images/editorial-egyptian-streets.jpg" alt="Editorial Egyptian Streets illustration" />
+            </div>
             <div class="project-info">
-              <div class="project-meta"><span>Illustration</span><span>2020</span></div>
               <h4 class="project-title">Editorial - Egyptian Streets</h4>
+              <div class="project-meta">Illustration, 2020</div>
             </div>
           </a>
 
-          <a class="project-card" href="#" data-category="illustration">
-            <div class="project-thumb"></div>
+          <a class="project-card" href="projects/portraits.html" data-category="illustration">
+            <div class="project-thumb">
+              <img src="images/portraits.jpg" alt="Portraits illustration" />
+            </div>
             <div class="project-info">
-              <div class="project-meta"><span>Illustration</span><span>2020</span></div>
               <h4 class="project-title">Portraits</h4>
+              <div class="project-meta">Illustration, 2020</div>
             </div>
           </a>
 
-          <a class="project-card" href="#" data-category="video">
-            <div class="project-thumb"></div>
+          <a class="project-card" href="projects/the-drew-barrymore-show.html" data-category="video">
+            <div class="project-thumb">
+              <img src="images/the-drew-barrymore-show.jpg" alt="The Drew Barrymore Show project image" />
+            </div>
             <div class="project-info">
-              <div class="project-meta"><span>TV / Video</span><span>2025</span></div>
               <h4 class="project-title">The Drew Barrymore Show</h4>
+              <div class="project-meta">TV / Video, 2025</div>
             </div>
           </a>
 
-          <a class="project-card" href="#" data-category="video">
-            <div class="project-thumb"></div>
+          <a class="project-card" href="projects/inside-edition.html" data-category="video">
+            <div class="project-thumb">
+              <img src="images/inside-edition.jpg" alt="Inside Edition project image" />
+            </div>
             <div class="project-info">
-              <div class="project-meta"><span>TV / Video</span><span>—</span></div>
               <h4 class="project-title">Inside Edition</h4>
+              <div class="project-meta">TV / Video</div>
             </div>
           </a>
 
-          <a class="project-card" href="#" data-category="video">
-            <div class="project-thumb"></div>
+          <a class="project-card" href="projects/the-late-show-with-stephen-colbert.html" data-category="video">
+            <div class="project-thumb">
+              <img src="images/the-late-show-with-stephen-colbert.jpg" alt="The Late Show with Stephen Colbert project image" />
+            </div>
             <div class="project-info">
-              <div class="project-meta"><span>TV / Video</span><span>—</span></div>
               <h4 class="project-title">The Late Show with Stephen Colbert</h4>
+              <div class="project-meta">TV / Video</div>
             </div>
           </a>
 
-          <a class="project-card" href="#" data-category="audio">
-            <div class="project-thumb"></div>
+          <a class="project-card" href="projects/the-egyptian-streets-podcast.html" data-category="audio">
+            <div class="project-thumb">
+              <img src="images/the-egyptian-streets-podcast.jpg" alt="The Egyptian Streets Podcast project image" />
+            </div>
             <div class="project-info">
-              <div class="project-meta"><span>Podcast / Audio</span><span>2021</span></div>
               <h4 class="project-title">The Egyptian Streets Podcast</h4>
+              <div class="project-meta">Podcast / Audio, 2021</div>
             </div>
           </a>
 
-          <a class="project-card" href="#" data-category="data">
-            <div class="project-thumb"></div>
+          <a class="project-card" href="projects/bloomberg-africa-business-summit.html" data-category="data">
+            <div class="project-thumb">
+              <img src="images/bloomberg-africa-business-summit.jpg" alt="Bloomberg Africa Business Summit data visualization image" />
+            </div>
             <div class="project-info">
-              <div class="project-meta"><span>Data Visualization</span><span>TBD</span></div>
               <h4 class="project-title">Bloomberg Africa Business Summit</h4>
+              <div class="project-meta">Data Visualization, TBD</div>
             </div>
           </a>
         </div>
@@ -628,25 +681,26 @@
         <div class="section-heading">
           <h3 id="about-title">About</h3>
           <p>
-            A visual journalist and producer working across editorial illustration, live events,
-            television, and audio storytelling.
+            A visual journalist and producer drawn to reporting, illustration, theater, and television.
           </p>
         </div>
 
         <div class="about-grid">
-          <img class="portrait-image" src="images/Portrait.png" alt="Portrait of Noran Morsi" />
+          <div class="portrait-wrap">
+            <img class="portrait-image" src="images/Portrait.png" alt="Portrait of Noran Morsi" />
+          </div>
+
           <div class="about-copy">
             <div class="kicker">Biography</div>
             <p><strong>Noran is a New York-based visual journalist from Cairo.</strong></p>
             <p>
-              Noran Morsi is a New York-based visual journalist and producer, and brings a diverse
-              blend of creative skills to storytelling. From Cairo, Egypt, she is passionate about
-              journalism, theater, and TV, with a love for illustration.
+              Noran Morsi is a New York-based visual journalist and producer, and brings a diverse blend
+              of creative skills to storytelling. From Cairo, Egypt, she is passionate about journalism,
+              theater, and TV, with a love for illustration.
             </p>
             <p>
-              Noran is currently an Editorial Coordinator at Bloomberg Live Experiences, where she
-              brings captivating global events to life, from San Francisco to Johannesburg, New York
-              to Los Angeles.
+              Noran is currently an Editorial Coordinator at Bloomberg Live Experiences, where she brings
+              captivating global events to life, from San Francisco to Johannesburg, New York to Los Angeles.
             </p>
             <p>Opinions are my own.</p>
           </div>
@@ -657,12 +711,15 @@
         <div class="section-heading">
           <h3 id="contact-title">Contact</h3>
           <p>
-            For commissions, collaborations, editorial work, or general inquiries.
+            For collaborations, commissions, editorial work, or general inquiries.
           </p>
         </div>
 
         <div class="contact-grid">
-          <img class="portrait-image" src="images/Portrait.png" alt="Portrait of Noran Morsi" />
+          <div class="portrait-wrap">
+            <img class="portrait-image" src="images/Portrait.png" alt="Portrait of Noran Morsi" />
+          </div>
+
           <div class="contact-copy">
             <div class="kicker">Email</div>
             <p>The best way to get in touch is by email.</p>
@@ -672,7 +729,7 @@
       </section>
 
       <div class="footer">
-        © <span id="year"></span> Noran Morsi. All rights reserved.
+        © <span id="year"></span> Noran Morsi
       </div>
     </main>
   </div>
@@ -722,3 +779,4 @@
   </script>
 </body>
 </html>
+```
