@@ -319,7 +319,16 @@
       gap: 2rem;
       align-items: start;
     }
-
+<style>
+  .portrait-image {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    border: 1px solid #d8cfc2;
+    box-shadow: 0 10px 30px rgba(31, 27, 24, 0.06);
+    object-fit: cover;
+  }
+</style>
     .portrait-placeholder {
       aspect-ratio: 4 / 5;
       background:
@@ -751,7 +760,7 @@
         </div>
 
         <div class="about-grid">
-          <div class="portrait-placeholder" aria-hidden="true"></div>
+          <img class="portrait-image" src="images/portrait.png" alt="Portrait of Noran Morsi">
           <div class="about-copy">
             <div class="kicker">Biography</div>
             <p><strong>Noran is a New York-based visual journalist from Cairo.</strong></p>
@@ -780,7 +789,7 @@
         </div>
 
         <div class="contact-grid">
-          <div class="portrait-placeholder" aria-hidden="true"></div>
+            <img class="portrait-image" src="images/portrait.png" alt="Portrait of Noran Morsi">
           <div class="contact-copy">
             <div class="kicker">Email</div>
             <p>
