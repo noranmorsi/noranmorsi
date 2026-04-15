@@ -110,7 +110,6 @@
     }
 
     .hero h2 {
-      /* Made smaller as requested */
       font-size: clamp(1.8rem, 4vw, 2.8rem);
       margin: 0 0 1rem;
       letter-spacing: -0.02em;
@@ -132,6 +131,7 @@
       gap: 1.5rem;
       border-bottom: 1px solid var(--line);
       padding-bottom: 1rem;
+      flex-wrap: wrap;
     }
 
     .filter-btn {
@@ -180,10 +180,11 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
 
-    /* Varied Ratios for visual interest */
-    .card[data-index="0"] .thumb { aspect-ratio: 4/5; }
-    .card[data-index="1"] .thumb { aspect-ratio: 1/1; }
+    /* Aspect Ratio logic */
+    .card[data-index="0"] .thumb, .card[data-index="4"] .thumb { aspect-ratio: 4/5; }
+    .card[data-index="1"] .thumb, .card[data-index="5"] .thumb { aspect-ratio: 1/1; }
     .card[data-index="2"] .thumb { aspect-ratio: 4/3; }
+    .card[data-index="3"] .thumb { aspect-ratio: 16/9; }
 
     .card-title {
       font-size: 1.1rem;
@@ -277,33 +278,46 @@
     <main class="main">
       <section class="hero" id="home">
         <h2>Noran is a New York-based visual journalist from Cairo.</h2>
-        <p>A portfolio of illustration, video, audio, and visual journalism.</p>
+        <p>A portfolio of illustration, TV, audio, and data visualization.</p>
       </section>
 
       <div class="filters">
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="illustration">Illustration</button>
-        <button class="filter-btn" data-filter="video">Video</button>
+        <button class="filter-btn" data-filter="tv">TV</button>
         <button class="filter-btn" data-filter="audio">Audio</button>
+        <button class="filter-btn" data-filter="data">Data Visualization</button>
       </div>
 
       <div class="grid" id="projectGrid">
-        <a href="#" class="card" data-category="illustration" data-index="0">
+        <a href="https://example.com/project-1" class="card" data-category="illustration" data-index="0">
           <div class="thumb"><img src="images/ramadan-nyc.jpg" alt="Ramadan in NYC"></div>
           <div class="card-title">Ramadan in New York City</div>
           <div class="meta">Illustration • 2025</div>
         </a>
 
-        <a href="#" class="card" data-category="illustration" data-index="1">
+        <a href="https://example.com/project-2" class="card" data-category="tv" data-index="1">
+          <div class="thumb"><img src="images/tv-doc.jpg" alt="TV Project"></div>
+          <div class="card-title">Documentary Short Title</div>
+          <div class="meta">TV Production • 2024</div>
+        </a>
+
+        <a href="https://example.com/project-3" class="card" data-category="audio" data-index="2">
+          <div class="thumb"><img src="images/audio-story.jpg" alt="Audio Project"></div>
+          <div class="card-title">Voices of the Diaspora</div>
+          <div class="meta">Audio Storytelling • 2024</div>
+        </a>
+
+        <a href="https://example.com/project-4" class="card" data-category="data" data-index="3">
+          <div class="thumb"><img src="images/data-viz.jpg" alt="Data Visualization"></div>
+          <div class="card-title">Mapping Global Narratives</div>
+          <div class="meta">Data Visualization • 2023</div>
+        </a>
+
+        <a href="https://example.com/project-5" class="card" data-category="illustration" data-index="4">
           <div class="thumb"><img src="images/cairo.jpg" alt="Cairo illustration"></div>
           <div class="card-title">Cairo</div>
           <div class="meta">Illustration • 2024</div>
-        </a>
-
-        <a href="#" class="card" data-category="illustration" data-index="2">
-          <div class="thumb"><img src="images/global-voices.jpg" alt="Global Voices"></div>
-          <div class="card-title">Global Voices</div>
-          <div class="meta">Illustration • 2023</div>
         </a>
       </div>
 
@@ -331,7 +345,6 @@
 
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
-        // Toggle active state
         buttons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
@@ -342,7 +355,6 @@
           
           if (isVisible) {
             card.style.display = 'block';
-            // Slight delay to allow display:block to trigger before opacity
             setTimeout(() => card.style.opacity = '1', 10);
           } else {
             card.style.opacity = '0';
