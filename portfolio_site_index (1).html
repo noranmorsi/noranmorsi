@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Name</title>
+    <meta
+      name="description"
+      content="Portfolio website for illustration, video, audio, and data visualization work."
+    />
+    <style>
+      :root {
+        --bg: #f5f0e9;
+        --paper: #fbf8f4;
+        --text: #171411;
+        --muted: #6e655d;
+        --line: rgba(23, 20, 17, 0.12);
+        --accent: #9f4d31;
+        --max-width: 1500px;
+        --sidebar-width: 300px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.45;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        width: min(100%, var(--max-width));
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+        gap: 2rem;
+        min-height: 100vh;
+        padding: 1.5rem;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 0;
+        align-self: start;
+        height: 100vh;
+        padding: 1rem 1rem 2rem 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .brand {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .brand-name {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .brand-copy {
+        font-size: 0.98rem;
+        color: var(--muted);
+        max-width: 26ch;
+      }
+
+      .nav {
+        margin-top: 1.25rem;
+        display: grid;
+        gap: 0.5rem;
+      }
+
+      .nav a {
+        padding: 0.35rem 0;
+        font-size: 1rem;
+      }
+
+      .nav a.active,
+      .nav a:hover,
+      .nav a:focus-visible {
+        color: var(--accent);
+      }
+
+      .socials {
+        display: flex;
+        gap: 0.85rem;
+        margin-top: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .socials a {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .socials a:hover,
+      .socials a:focus-visible {
+        color: var(--text);
+      }
+
+      .mobile-header {
+        display: none;
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: rgba(245, 240, 233, 0.92);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--line);
+        padding: 1rem 1.25rem;
+      }
+
+      .mobile-header-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .mobile-title {
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .menu-button {
+        border: 1px solid var(--line);
+        background: var(--paper);
+        border-radius: 999px;
+        padding: 0.65rem 0.9rem;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .mobile-menu {
+        display: none;
+        padding-top: 1rem;
+      }
+
+      .mobile-menu.open {
+        display: block;
+      }
+
+      .mobile-menu .nav {
+        margin-top: 0;
+      }
+
+      .content {
+        padding: 1rem 0 3rem;
+      }
+
+      .intro {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .intro h1 {
+        margin: 0;
+        font-size: clamp(1.7rem, 3vw, 2.4rem);
+        font-weight: 700;
+      }
+
+      .intro p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 48ch;
+      }
+
+      .filters {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+      }
+
+      .filter-chip {
+        border: 1px solid var(--line);
+        background: transparent;
+        color: var(--text);
+        padding: 0.7rem 0.95rem;
+        border-radius: 999px;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .filter-chip.active {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: white;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.1rem;
+      }
+
+      .card {
+        display: block;
+      }
+
+      .thumb {
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        background: linear-gradient(135deg, #e5ddd2, #d8ccbf);
+      }
+
+      .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 300ms ease;
+      }
+
+      .card:hover .thumb img,
+      .card:focus-visible .thumb img {
+        transform: scale(1.02);
+      }
+
+      .placeholder {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+        color: rgba(23, 20, 17, 0.5);
+        font-size: 0.95rem;
+        letter-spacing: 0.02em;
+      }
+
+      .meta {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 1rem;
+        padding-top: 0.65rem;
+      }
+
+      .title {
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .year {
+        font-size: 0.95rem;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      .type {
+        color: var(--muted);
+        font-size: 0.92rem;
+        margin-top: 0.2rem;
+      }
+
+      .about,
+      .contact {
+        margin-top: 3.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .section-heading {
+        font-size: 1.35rem;
+        margin: 0 0 0.9rem;
+      }
+
+      .prose {
+        color: var(--muted);
+        max-width: 68ch;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .contact-list a {
+        width: fit-content;
+        border-bottom: 1px solid transparent;
+      }
+
+      .contact-list a:hover,
+      .contact-list a:focus-visible {
+        border-color: currentColor;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      @media (max-width: 980px) {
+        .page {
+          grid-template-columns: 1fr;
+          padding-top: 0;
+        }
+
+        .sidebar {
+          display: none;
+        }
+
+        .mobile-header {
+          display: block;
+        }
+
+        .content {
+          padding: 1.25rem;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .intro {
+          flex-direction: column;
+          align-items: start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="mobile-header">
+      <div class="mobile-header-row">
+        <div class="mobile-title">Your Name</div>
+        <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="mobileMenu">
+          Menu
+        </button>
+      </div>
+      <div class="mobile-menu" id="mobileMenu">
+        <nav class="nav" aria-label="Mobile navigation">
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="socials">
+          <a href="#">Instagram</a>
+          <a href="#">LinkedIn</a>
+          <a href="mailto:you@example.com">Email</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="page">
+      <aside class="sidebar">
+        <div>
+          <div class="brand">
+            <a class="brand-name" href="#work">Your Name</a>
+            <p class="brand-copy">
+              Add a one- or two-sentence introduction here. Example: illustrator, producer, and multimedia storyteller based in New York.
+            </p>
+          </div>
+
+          <nav class="nav" aria-label="Primary navigation">
+            <a href="#work" class="active">Work</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </nav>
+
+          <div class="socials">
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+            <a href="mailto:you@example.com">Email</a>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content">
+        <section id="work">
+          <div class="intro">
+            <h1>Selected work</h1>
+            <p>
+              Replace these placeholders with your real projects. The filters are already wired up for illustration, video, audio, and data visualization.
+            </p>
+          </div>
+
+          <div class="filters" aria-label="Project filters">
+            <button class="filter-chip active" type="button" data-filter="all">All</button>
+            <button class="filter-chip" type="button" data-filter="illustration">Illustration</button>
+            <button class="filter-chip" type="button" data-filter="video">TV / Video</button>
+            <button class="filter-chip" type="button" data-filter="audio">Podcast / Audio</button>
+            <button class="filter-chip" type="button" data-filter="data-viz">Data Visualization</button>
+          </div>
+
+          <div class="grid" id="projectGrid">
+            <a class="card" href="#" data-category="illustration">
+              <div class="thumb"><div class="placeholder">Project image</div></div>
+              <div class="meta">
+                <div>
+                  <div class="title">Illustration Project One</div>
+                  <div class="type">Illustration</div>
+                </div>
+                <div class="year">2026</div>
+              </div>
+            </a>
+
+            <a class="card" href="#" data-category="video">
+              <div class="thumb"><div class="placeholder">Project image</div></div>
+              <div class="meta">
+                <div>
+                  <div class="title">Video Project One</div>
+                  <div class="type">TV / Video</div>
+                </div>
+                <div class="year">2026</div>
+              </div>
+            </a>
+
+            <a class="card" href="#" data-category="audio">
+              <div class="thumb"><div class="placeholder">Project image</div></div>
+              <div class="meta">
+                <div>
+                  <div class="title">Audio Project One</div>
+                  <div class="type">Podcast / Audio</div>
+                </div>
+                <div class="year">2026</div>
+              </div>
+            </a>
+
+            <a class="card" href="#" data-category="data-viz illustration">
+              <div class="thumb"><div class="placeholder">Project image</div></div>
+              <div class="meta">
+                <div>
+                  <div class="title">Data Visualization Project One</div>
+                  <div class="type">Data Visualization / Illustration</div>
+                </div>
+                <div class="year">2026</div>
+              </div>
+            </a>
+
+            <a class="card" href="#" data-category="illustration">
+              <div class="thumb"><div class="placeholder">Project image</div></div>
+              <div class="meta">
+                <div>
+                  <div class="title">Illustration Project Two</div>
+                  <div class="type">Illustration</div>
+                </div>
+                <div class="year">2026</div>
+              </div>
+            </a>
+
+            <a class="card" href="#" data-category="video audio">
+              <div class="thumb"><div class="placeholder">Project image</div></div>
+              <div class="meta">
+                <div>
+                  <div class="title">Multimedia Project</div>
+                  <div class="type">TV / Video / Audio</div>
+                </div>
+                <div class="year">2026</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <section class="about" id="about">
+          <h2 class="section-heading">About</h2>
+          <div class="prose">
+            <p>
+              Add your bio here. Keep it short: two or three paragraphs at most. You can describe your practice, where you are based, and the kinds of projects or commissions you take on.
+            </p>
+          </div>
+        </section>
+
+        <section class="contact" id="contact">
+          <h2 class="section-heading">Contact</h2>
+          <div class="prose">
+            <p>
+              Add a short contact sentence here.
+            </p>
+          </div>
+          <div class="contact-list">
+            <a href="mailto:you@example.com">you@example.com</a>
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const menuButton = document.getElementById('menuButton');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', () => {
+          const isOpen = mobileMenu.classList.toggle('open');
+          menuButton.setAttribute('aria-expanded', String(isOpen));
+        });
+      }
+
+      const chips = document.querySelectorAll('.filter-chip');
+      const cards = document.querySelectorAll('.card');
+
+      chips.forEach((chip) => {
+        chip.addEventListener('click', () => {
+          const filter = chip.dataset.filter;
+
+          chips.forEach((c) => c.classList.remove('active'));
+          chip.classList.add('active');
+
+          cards.forEach((card) => {
+            const categories = card.dataset.category || '';
+            const show = filter === 'all' || categories.split(' ').includes(filter);
+            card.classList.toggle('hidden', !show);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
