@@ -52,6 +52,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
 
     .layout {
@@ -60,8 +61,8 @@
       min-height: 100vh;
     }
 
-   .sidebar {
-  padding: 2.25rem 1.5rem;
+    .sidebar {
+      padding: 2.25rem 1.5rem;
       border-right: 1px solid black;
       position: sticky;
       top: 0;
@@ -134,10 +135,11 @@
     }
 
     .main {
-  padding: 2.5rem 2.25rem;
-}
+      padding: 2.5rem 2.25rem;
+    }
+
     .filters {
-      margin-bottom: 3rem;
+      margin-bottom: 1.5rem;
       display: flex;
       gap: 1.5rem;
       border-bottom: 1px solid black;
@@ -165,28 +167,94 @@
       text-decoration: underline;
     }
 
-   .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 1.75rem;
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.35rem;
+    }
 
     .card {
       display: block;
+      position: relative;
+      overflow: hidden;
+      color: #ffffff;
     }
 
     .thumb {
-      border-radius: 12px;
       overflow: hidden;
-      margin-bottom: 1rem;
+      margin-bottom: 0;
+      aspect-ratio: 4 / 3;
+      background: #f2f2f2;
+    }
+
+    .card-title,
+    .meta {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      z-index: 2;
+      color: #ffffff;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: var(--transition);
     }
 
     .card-title {
+      bottom: 2.15rem;
+      font-size: 1.25rem;
       font-weight: 500;
+      line-height: 1.15;
     }
 
     .meta {
+      bottom: 1rem;
       font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      opacity: 0;
+      transition: var(--transition);
+      pointer-events: none;
+    }
+
+    .card:hover::after,
+    .card:hover .card-title,
+    .card:hover .meta {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid black;
+      }
+
+      .nav {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .nav a {
+        font-size: 2.2rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
