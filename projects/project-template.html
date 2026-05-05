@@ -26,7 +26,9 @@
       --transition: all 0.3s ease;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -42,8 +44,13 @@
       transition: var(--transition);
     }
 
-    a:active { color: var(--click-green); }
-    a.clicked-link { color: var(--selected-green); }
+    a:active {
+      color: var(--click-green);
+    }
+
+    a.clicked-link {
+      color: var(--selected-green);
+    }
 
     img {
       width: 100%;
@@ -87,22 +94,36 @@
       transition: opacity 0.3s;
     }
 
-    .photo-hover { opacity: 0; }
-    .brand-link:hover .photo-hover { opacity: 1; }
-    .brand-link:hover .photo-default { opacity: 0; }
+    .photo-hover {
+      opacity: 0;
+    }
+
+    .brand-link:hover .photo-hover {
+      opacity: 1;
+    }
+
+    .brand-link:hover .photo-default {
+      opacity: 0;
+    }
 
     .tagline {
       font-family: 'Six Hands Rough', serif;
       font-size: 2.2rem;
+      line-height: 1;
       margin-bottom: 2rem;
-      line-height: 1.05;
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
     }
 
     .nav a {
       font-family: 'Six Hands Rough', serif;
       font-size: 3.1rem;
-      display: block;
       line-height: 1;
+      display: block;
     }
 
     .social-links {
@@ -135,6 +156,7 @@
     .back-link {
       font-family: 'Six Hands Rough', serif;
       font-size: 1.8rem;
+      line-height: 1;
       display: inline-block;
       margin-bottom: 2rem;
       color: var(--selected-green);
@@ -298,6 +320,7 @@
 
       .nav {
         display: flex;
+        flex-direction: row;
         gap: 1.5rem;
         flex-wrap: wrap;
       }
