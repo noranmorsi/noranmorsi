@@ -20,6 +20,8 @@
       --bg: #ffffff;
       --text: #000000;
       --line: #000000;
+      --click-green: #1f5f3a;
+      --selected-green: #2f6f4f;
       --transition: all 0.3s ease;
     }
 
@@ -32,9 +34,25 @@
       color: var(--text);
     }
 
-    a { text-decoration: none; color: inherit; }
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
 
-    img { width: 100%; height: 100%; object-fit: cover; }
+    a:active {
+      color: var(--click-green);
+    }
+
+    a.clicked-link {
+      color: var(--selected-green);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
     .layout {
       display: grid;
@@ -59,7 +77,11 @@
       display: block;
     }
 
-    .brand-photo { position: relative; width: 100%; height: 100%; }
+    .brand-photo {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
 
     .brand-photo img {
       position: absolute;
@@ -68,8 +90,14 @@
     }
 
     .photo-hover { opacity: 0; }
-    .brand-link:hover .photo-hover { opacity: 1; }
-    .brand-link:hover .photo-default { opacity: 0; }
+
+    .brand-link:hover .photo-hover {
+      opacity: 1;
+    }
+
+    .brand-link:hover .photo-default {
+      opacity: 0;
+    }
 
     .tagline {
       font-family: 'Six Hands Rough', serif;
@@ -87,12 +115,22 @@
       margin-top: 1.5rem;
       display: flex;
       gap: 1rem;
+      align-items: center;
+    }
+
+    .social-links a {
+      width: 26px;
+      height: 26px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .social-links svg {
       width: 24px;
       height: 24px;
-      fill: black;
+      fill: currentColor;
+      display: block;
     }
 
     .main {
@@ -105,6 +143,7 @@
       gap: 1.5rem;
       border-bottom: 1px solid black;
       padding-bottom: 1rem;
+      flex-wrap: wrap;
     }
 
     .filter-btn {
@@ -113,9 +152,17 @@
       cursor: pointer;
       font-family: 'Six Hands Rough', serif;
       font-size: 1.8rem;
+      color: #000000;
+      padding: 0;
+      transition: var(--transition);
+    }
+
+    .filter-btn:active {
+      color: var(--click-green);
     }
 
     .filter-btn.active {
+      color: var(--selected-green);
       text-decoration: underline;
     }
 
@@ -125,14 +172,23 @@
       gap: 2.5rem;
     }
 
+    .card {
+      display: block;
+    }
+
     .thumb {
       border-radius: 12px;
       overflow: hidden;
       margin-bottom: 1rem;
     }
 
-    .card-title { font-weight: 500; }
+    .card-title {
+      font-weight: 500;
+    }
 
+    .meta {
+      font-size: 0.85rem;
+    }
   </style>
 </head>
 
@@ -142,8 +198,8 @@
   <aside class="sidebar">
     <a href="#home" class="brand-link">
       <div class="brand-photo">
-        <img class="photo-default" src="images/noran-1.png">
-        <img class="photo-hover" src="images/noran-2.png">
+        <img class="photo-default" src="images/noran-1.png" alt="Noran Morsi">
+        <img class="photo-hover" src="images/noran-2.png" alt="Noran Morsi alternate portrait">
       </div>
     </a>
 
@@ -158,11 +214,16 @@
     </nav>
 
     <div class="social-links">
-      <a href="https://www.linkedin.com/in/noranmorsi/" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M19 0h-14..."/></svg>
+      <a href="https://www.linkedin.com/in/noranmorsi/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
+        </svg>
       </a>
-      <a href="mailto:noranmorsi@gmail.com">
-        <svg viewBox="0 0 24 24"><path d="M2 4h20v16H2z"/></svg>
+
+      <a href="mailto:noranmorsi@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M2 4h20c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm10 9 10-6.25V6L12 12.25 2 6v.75L12 13zm0 2L2 8.75V18h20V8.75L12 15z"/>
+        </svg>
       </a>
     </div>
   </aside>
@@ -180,97 +241,97 @@
     <div class="grid" id="projectGrid">
 
       <a href="projects/ramadan-new-york-city-2026.html" class="card" data-category="illustration">
-        <div class="thumb"><img src="images/ramadan-new-york-city-2026.png"></div>
+        <div class="thumb"><img src="images/ramadan-new-york-city-2026.png" alt="Ramadan in New York City 2026"></div>
         <div class="card-title">Ramadan in New York City</div>
         <div class="meta">2026</div>
       </a>
 
       <a href="projects/ramadan-new-york-city.html" class="card" data-category="illustration">
-        <div class="thumb"><img src="images/ramadan-new-york-city.png"></div>
+        <div class="thumb"><img src="images/ramadan-new-york-city.png" alt="Ramadan in New York City 2025"></div>
         <div class="card-title">Ramadan in New York City</div>
         <div class="meta">2025</div>
       </a>
 
       <a href="projects/drew-barrymore-show.html" class="card" data-category="tv">
-        <div class="thumb"><img src="images/drew-barrymore-show.png"></div>
+        <div class="thumb"><img src="images/drew-barrymore-show.png" alt="The Drew Barrymore Show"></div>
         <div class="card-title">The Drew Barrymore Show</div>
         <div class="meta">2025</div>
       </a>
 
       <a href="projects/new-york-city.html" class="card" data-category="illustration">
-        <div class="thumb"><img src="images/new-york-city.png"></div>
+        <div class="thumb"><img src="images/new-york-city.png" alt="New York City"></div>
         <div class="card-title">New York City</div>
         <div class="meta">2025</div>
       </a>
 
       <a href="projects/nyc-stores.html" class="card" data-category="illustration data">
-        <div class="thumb"><img src="images/nyc-stores.png"></div>
+        <div class="thumb"><img src="images/nyc-stores.png" alt="NYC Stores"></div>
         <div class="card-title">NYC Stores</div>
         <div class="meta">2025</div>
       </a>
 
       <a href="projects/cairo.html" class="card" data-category="illustration">
-        <div class="thumb"><img src="images/cairo.png"></div>
+        <div class="thumb"><img src="images/cairo.png" alt="Cairo"></div>
         <div class="card-title">Cairo</div>
         <div class="meta">2024</div>
       </a>
 
       <a href="projects/atlas-obscura.html" class="card" data-category="illustration">
-        <div class="thumb"><img src="images/atlas-obscura.png"></div>
+        <div class="thumb"><img src="images/atlas-obscura.png" alt="Atlas Obscura"></div>
         <div class="card-title">Atlas Obscura</div>
         <div class="meta">2024</div>
       </a>
 
       <a href="projects/center-for-arab-narratives.html" class="card" data-category="illustration">
-        <div class="thumb"><img src="images/center-for-arab-narratives.png"></div>
+        <div class="thumb"><img src="images/center-for-arab-narratives.png" alt="Center for Arab Narratives"></div>
         <div class="card-title">Center for Arab Narratives</div>
         <div class="meta">2024</div>
       </a>
 
       <a href="projects/global-voices.html" class="card" data-category="data">
-        <div class="thumb"><img src="images/global-voices.png"></div>
+        <div class="thumb"><img src="images/global-voices.png" alt="Global Voices"></div>
         <div class="card-title">Global Voices</div>
         <div class="meta">2023</div>
       </a>
 
       <a href="projects/60-hours-in-europe-comic.html" class="card" data-category="illustration">
-        <div class="thumb"><img src="images/60-hours-in-europe-comic.png"></div>
+        <div class="thumb"><img src="images/60-hours-in-europe-comic.png" alt="60 Hours in Europe Comic"></div>
         <div class="card-title">60 Hours in Europe Comic</div>
         <div class="meta">2023</div>
       </a>
 
       <a href="projects/comics.html" class="card" data-category="illustration">
-        <div class="thumb"><img src="images/comics.png"></div>
+        <div class="thumb"><img src="images/comics.png" alt="Comics"></div>
         <div class="card-title">Comics</div>
         <div class="meta">2023</div>
       </a>
 
       <a href="projects/ramy-editorial.html" class="card" data-category="illustration">
-        <div class="thumb"><img src="images/ramy-editorial.png"></div>
+        <div class="thumb"><img src="images/ramy-editorial.png" alt="Ramy Editorial"></div>
         <div class="card-title">Ramy Editorial</div>
         <div class="meta">2022</div>
       </a>
 
       <a href="projects/commissions.html" class="card" data-category="illustration">
-        <div class="thumb"><img src="images/commissions.png"></div>
+        <div class="thumb"><img src="images/commissions.png" alt="Commissions"></div>
         <div class="card-title">Commissions</div>
         <div class="meta">2021</div>
       </a>
 
       <a href="projects/egyptian-streets-podcast.html" class="card" data-category="audio">
-        <div class="thumb"><img src="images/egyptian-streets-podcast.png"></div>
+        <div class="thumb"><img src="images/egyptian-streets-podcast.png" alt="Egyptian Streets Podcast"></div>
         <div class="card-title">Egyptian Streets Podcast</div>
         <div class="meta">2021</div>
       </a>
 
       <a href="projects/editorial-egyptian-streets.html" class="card" data-category="illustration">
-        <div class="thumb"><img src="images/editorial-egyptian-streets.png"></div>
+        <div class="thumb"><img src="images/editorial-egyptian-streets.png" alt="Editorial Egyptian Streets"></div>
         <div class="card-title">Editorial — Egyptian Streets</div>
         <div class="meta">2020</div>
       </a>
 
       <a href="projects/portraits.html" class="card" data-category="illustration">
-        <div class="thumb"><img src="images/portraits.png"></div>
+        <div class="thumb"><img src="images/portraits.png" alt="Portraits"></div>
         <div class="card-title">Portraits</div>
         <div class="meta">2020</div>
       </a>
@@ -283,6 +344,7 @@
 <script>
 const buttons = document.querySelectorAll('.filter-btn');
 const cards = document.querySelectorAll('.card');
+const links = document.querySelectorAll('a');
 
 buttons.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -296,6 +358,13 @@ buttons.forEach(btn => {
       const isVisible = filter === 'all' || categories.includes(filter);
       card.style.display = isVisible ? 'block' : 'none';
     });
+  });
+});
+
+links.forEach(link => {
+  link.addEventListener('click', () => {
+    links.forEach(l => l.classList.remove('clicked-link'));
+    link.classList.add('clicked-link');
   });
 });
 </script>
