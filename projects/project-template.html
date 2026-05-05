@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Project Title — Noran Morsi</title>
+
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="shortcut icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+
+  <style>
+    @font-face {
+      font-family: 'Six Hands Rough';
+      src: url('/fonts/SixHandsRough.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: #000000;
+      font-family: 'Fraunces', serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: #000000;
+      text-decoration: none;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    .project-page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    .back-link {
+      font-family: 'Six Hands Rough', 'Fraunces', serif;
+      font-size: 2.2rem;
+      line-height: 1;
+      display: inline-block;
+      margin-bottom: 3rem;
+      transition: transform 0.3s ease;
+    }
+
+    .back-link:hover {
+      transform: translateX(-4px);
+    }
+
+    .project-header {
+      margin-bottom: 3rem;
+      border-bottom: 1px solid #000000;
+      padding-bottom: 2rem;
+    }
+
+    .project-title {
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: 0.95;
+      margin: 0 0 1rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+
+    .project-meta {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-description {
+      font-size: 1.25rem;
+      max-width: 760px;
+      margin: 0;
+    }
+
+    .project-section {
+      margin: 3rem 0;
+    }
+
+    .project-section p {
+      font-size: 1.1rem;
+      max-width: 760px;
+    }
+
+    .image-full {
+      margin: 2rem 0;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .caption {
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .you-may-like {
+      margin-top: 5rem;
+      padding-top: 3rem;
+      border-top: 1px solid #000000;
+    }
+
+    .you-may-like h2 {
+      font-family: 'Six Hands Rough', 'Fraunces', serif;
+      font-size: 3rem;
+      line-height: 1;
+      margin: 0 0 1.5rem;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .related-card {
+      border: 1px solid #000000;
+      padding: 1.25rem;
+      transition: transform 0.3s ease;
+    }
+
+    .related-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .related-card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.3rem;
+      line-height: 1.2;
+      font-weight: 500;
+    }
+
+    .related-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 700px) {
+      .project-page {
+        padding: 2rem 1.25rem 4rem;
+      }
+
+      .image-grid,
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .back-link {
+        font-size: 1.8rem;
+      }
+
+      .you-may-like h2 {
+        font-size: 2.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="project-page">
+    <a href="/index.html" class="back-link">← Back to projects</a>
+
+    <header class="project-header">
+      <h1 class="project-title">Project Title Goes Here</h1>
+
+      <div class="project-meta">
+        Illustration • 2025
+      </div>
+
+      <p class="project-description">
+        Write a short description of the project here. This can explain the assignment,
+        publication, reporting context, visual approach, or your role.
+      </p>
+    </header>
+
+    <section class="project-section">
+      <div class="image-full">
+        <img src="/images/project-image-1.png" alt="Describe this image">
+        <div class="caption">Optional caption goes here.</div>
+      </div>
+
+      <p>
+        Add body text here. This can describe the process, reporting, production,
+        illustration method, research, editorial context, or outcome.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <div class="image-grid">
+        <img src="/images/project-image-2.png" alt="Describe this image">
+        <img src="/images/project-image-3.png" alt="Describe this image">
+      </div>
+
+      <p>
+        Add another paragraph here, or delete this whole section if the project only
+        needs one image and one description.
+      </p>
+    </section>
+
+    <section class="you-may-like">
+      <h2>You may also like</h2>
+
+      <div class="related-grid">
+        <a href="/projects/another-project.html" class="related-card">
+          <h3>Another Project Title</h3>
+          <p>Illustration • 2024</p>
+        </a>
+
+        <a href="/projects/second-project.html" class="related-card">
+          <h3>Second Project Title</h3>
+          <p>Audio • 2024</p>
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
