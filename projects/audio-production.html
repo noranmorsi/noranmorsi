@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Audio — Noran Morsi</title>
+
+  <link rel="icon" type="image/png" href="../favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+
+  <style>
+    @font-face {
+      font-family: 'Six Hands Rough';
+      src: url('../fonts/SixHandsRough.woff2') format('woff2');
+    }
+
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+      --line: #000000;
+      --click-green: #1f5f3a;
+      --selected-green: #2f6f4f;
+      --transition: all 0.3s ease;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Fraunces', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    a:hover,
+    a:active {
+      color: var(--click-green);
+    }
+
+    a.clicked-link {
+      color: var(--selected-green);
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      padding: 2.25rem 1.5rem;
+      border-right: 1px solid black;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-link {
+      max-width: 230px;
+      aspect-ratio: 888 / 475;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .brand-photo {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .brand-photo img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.3s;
+    }
+
+    .photo-hover { opacity: 0; }
+    .brand-link:hover .photo-hover { opacity: 1; }
+    .brand-link:hover .photo-default { opacity: 0; }
+
+    .tagline {
+      font-family: 'Six Hands Rough', serif;
+      font-size: 2.2rem;
+      line-height: 1;
+      margin-bottom: 2rem;
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .nav a {
+      font-family: 'Six Hands Rough', serif;
+      font-size: 3.1rem;
+      line-height: 1;
+      display: block;
+    }
+
+    .social-links {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .social-links a {
+      width: 26px;
+      height: 26px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-links svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+      display: block;
+    }
+
+    .main {
+      padding: 2.5rem 2.25rem;
+      max-width: 1200px;
+    }
+
+    .back-link {
+      font-family: 'Six Hands Rough', serif;
+      font-size: 1.8rem;
+      line-height: 1;
+      display: inline-block;
+      margin-bottom: 2rem;
+      color: var(--selected-green);
+    }
+
+    .project-header {
+      border-bottom: 1px solid black;
+      padding-bottom: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .project-title {
+      font-size: clamp(2.6rem, 6vw, 5.5rem);
+      line-height: 0.95;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      margin: 0 0 1rem;
+    }
+
+    .project-meta {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-description {
+      font-size: 1.25rem;
+      max-width: 760px;
+      margin: 0;
+    }
+
+    .audio-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    .audio-entry {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.8fr) minmax(320px, 1.2fr);
+      gap: 2rem;
+      align-items: start;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid black;
+    }
+
+    .audio-entry:last-child {
+      border-bottom: none;
+    }
+
+    .audio-image {
+      background: #ffffff;
+    }
+
+    .audio-image img {
+      height: auto;
+      object-fit: contain;
+    }
+
+    .audio-text {
+      font-size: 1.05rem;
+      max-width: 720px;
+    }
+
+    .audio-text h2 {
+      font-size: 1.5rem;
+      line-height: 1.15;
+      margin: 0 0 1rem;
+      font-weight: 500;
+    }
+
+    .audio-text p {
+      margin: 0 0 1rem;
+    }
+
+    .audio-text ul {
+      padding-left: 1.2rem;
+      margin: 1rem 0;
+    }
+
+    .audio-text li {
+      margin-bottom: 0.55rem;
+    }
+
+    .you-may-like {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid black;
+    }
+
+    .you-may-like h2 {
+      font-family: 'Six Hands Rough', serif;
+      font-size: 3rem;
+      line-height: 1;
+      margin: 0 0 1.5rem;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.35rem;
+    }
+
+    .related-card {
+      position: relative;
+      overflow: hidden;
+      display: block;
+      aspect-ratio: 4 / 3;
+      background: #f2f2f2;
+    }
+
+    .related-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .related-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 1;
+    }
+
+    .related-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .related-box {
+      background: #ffffff;
+      color: #000000;
+      padding: 0.75rem 1.25rem;
+      text-align: center;
+      max-width: 80%;
+    }
+
+    .related-box h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.15;
+    }
+
+    .related-box p {
+      margin: 0.25rem 0 0;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .related-card:hover::after,
+    .related-card:hover .related-overlay {
+      opacity: 1;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid black;
+      }
+
+      .nav {
+        flex-direction: row;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .nav a {
+        font-size: 2.2rem;
+      }
+
+      .main {
+        padding: 2rem 1.5rem;
+      }
+
+      .audio-entry,
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="../index.html#home" class="brand-link">
+      <div class="brand-photo">
+        <img class="photo-default" src="../images/noran-1.png" alt="Noran Morsi">
+        <img class="photo-hover" src="../images/noran-2.png" alt="Noran Morsi alternate portrait">
+      </div>
+    </a>
+
+    <div class="tagline">
+      Noran is a New York-based illustrator from Cairo &amp; a journalist at Bloomberg Live.
+    </div>
+
+    <nav class="nav">
+      <a href="../index.html#home">Projects</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/noranmorsi/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
+        </svg>
+      </a>
+
+      <a href="mailto:noranmorsi@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M2 4h20c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm10 9 10-6.25V6L12 12.25 2 6v.75L12 13zm0 2L2 8.75V18h20V8.75L12 15z"/>
+        </svg>
+      </a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <a href="../index.html#home" class="back-link">← Back to projects</a>
+
+    <header class="project-header">
+      <h1 class="project-title">Audio</h1>
+
+      <div class="project-meta">
+        Audio Production • 2019–2024
+      </div>
+
+      <p class="project-description">
+        A selection of podcast, documentary audio, hosting, editing, and production work.
+      </p>
+    </header>
+
+    <section class="audio-list">
+
+      <article class="audio-entry">
+        <div class="audio-image">
+          <img src="https://cdn.myportfolio.com/193e531d-b7ef-4851-b5d8-5d9c2a51d919/35b819b3-1046-46d7-a0b2-e6ebc538eb97_rw_1200.jpg?h=1752e0ddfbc58ecea85288a293b67c93" alt="The Egyptian Streets Podcast">
+        </div>
+
+        <div class="audio-text">
+          <h2>The Egyptian Streets Podcast</h2>
+
+          <p>
+            Featuring Egyptians around the world who fuel creative social change and their journeys that brought them there. From the intersection of Egyptian identity and creative social change: stories from street to sound.
+          </p>
+
+          <p>
+            <a href="https://anchor.fm/egyptianstreets" target="_blank" rel="noopener noreferrer">The Egyptian Streets Podcast</a>
+          </p>
+
+          <p>
+            Produced, hosted, and edited by Noran.<br>
+            2020–2021
+          </p>
+
+          <ul>
+            <li><a href="https://egyptianstreets.com/2021/02/07/bassem-youssef-is-on-the-egyptian-streets-podcast/" target="_blank" rel="noopener noreferrer">Bassem Youssef — Reinvention, Political Satire and a Plant Based Diet</a></li>
+            <li><a href="https://egyptianstreets.com/2021/05/02/podcast-felukahs-storytelling-through-rap-and-movement-from-cairo-to-new-york/" target="_blank" rel="noopener noreferrer">Felukah — New York and Cairo, Storytelling, and Rap</a></li>
+            <li><a href="https://egyptianstreets.com/2021/01/10/actress-rosaline-elbay-is-the-egyptian-streets-podcasts-first-guest/" target="_blank" rel="noopener noreferrer">Rosaline Elbay — Ramy, British Theatre and Archaeology</a></li>
+            <li><a href="https://egyptianstreets.com/2021/01/24/on-the-egyptian-streets-podcast-graphic-novelist-deena-mohamed-of-shubeik-lubeik/" target="_blank" rel="noopener noreferrer">Deena Mohamed — Shubeik Lubeik, Qahira and Graphic Novels in Egypt</a></li>
+            <li><a href="https://egyptianstreets.com/2021/04/05/podcast-amir-el-masry-talks-criminology-and-acting-across-countries/" target="_blank" rel="noopener noreferrer">Amir El-Masry — Limbo, Studying Criminology, and a British-Egyptian Identity</a></li>
+            <li><a href="https://podcasters.spotify.com/pod/show/egyptianstreets" target="_blank" rel="noopener noreferrer">Many more episodes</a></li>
+          </ul>
+
+          <p>
+            “The <a href="https://egyptianstreets.com/egyptianstreetspodcast/" target="_blank" rel="noopener noreferrer">Egyptian Streets Podcast</a> already had a successful first season, but season 2 attracted attention for its new theme” — <a href="https://awimnews.com/egyptian-women-at-the-heart-of-podcast-boom/" target="_blank" rel="noopener noreferrer">AWIM News</a>
+          </p>
+
+          <p>
+            “Multimedia journalist Noran Morsi produces the podcast of the news website Egyptian Streets, which features women from different backgrounds – from music, cinema, and graphic design to trans activism.” — <a href="https://www.al-monitor.com/originals/2022/12/feminist-podcasts-egypt-open-new-space-ideas" target="_blank" rel="noopener noreferrer">Al Monitor</a>
+          </p>
+
+          <p>
+            <a href="https://egyptianstreets.com/2021/07/16/10-lessons-i-learned-from-creating-the-egyptian-streets-podcast/" target="_blank" rel="noopener noreferrer">10 Lessons I Learned from Creating the Egyptian Streets Podcast</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="audio-entry">
+        <div class="audio-image">
+          <img src="https://cdn.myportfolio.com/193e531d-b7ef-4851-b5d8-5d9c2a51d919/8bfd3af1-be3f-463c-8283-c95d93dbd81f_rw_600.png?h=73cc14cf58dbc9de3763c04bed8e9ee4" alt="Podcast Noor">
+        </div>
+
+        <div class="audio-text">
+          <h2>Podcast Noor</h2>
+
+          <p>
+            Podcast Noor is a show by award-winning storyteller Noor Tagouri. This series brings together storytellers in all forms, sharing their story for the first time, or the right time.
+          </p>
+
+          <ul>
+            <li><a href="https://open.spotify.com/episode/4Jgn8C3TnV3LRRYLxR95Dh?si=9e64d5d38b3f4687" target="_blank" rel="noopener noreferrer">37. What Goes Into A Sarah Bahbah Vision?</a></li>
+            <li><a href="https://open.spotify.com/episode/281VEzF1enVqO9yjpL3hzU?si=jNxUa-aDQT2NtPMaxHnA4w" target="_blank" rel="noopener noreferrer">36. Seun Kuti on his Father Fela’s Legacy</a></li>
+            <li><a href="https://open.spotify.com/episode/5oqdgXCzlfkqXv6EfAcl1L?si=kMRHNl0GT2SG2lopWnzrAw" target="_blank" rel="noopener noreferrer">34. Dr. Butch Ware: Is Capitalism Your Religion?</a></li>
+            <li><a href="https://open.spotify.com/episode/36Awxgu3NVyvJBilEM4fEo?si=vgSqvbUzRcW-OeMtIFmG4w" target="_blank" rel="noopener noreferrer">33. Is The Climate Crisis a Spiritual Crisis?</a></li>
+            <li><a href="https://open.spotify.com/episode/4bxmcMFKriJS7xROA0hr4Y?si=fktul92QTIKrGdC21d7-kQ" target="_blank" rel="noopener noreferrer">32. Franklin Sirmans and Jason Seife</a></li>
+            <li><a href="https://open.spotify.com/episode/6TEb1jFc78VdDZE7OaH7Dc?si=fO9EkgTUSqufk8p_GRFIDA" target="_blank" rel="noopener noreferrer">31. Hawa Hassan on Grandmother Representation</a></li>
+          </ul>
+
+          <p>
+            Edited by Noran.<br>
+            2023
+          </p>
+        </div>
+      </article>
+
+      <article class="audio-entry">
+        <div class="audio-image">
+          <img src="https://cdn.myportfolio.com/193e531d-b7ef-4851-b5d8-5d9c2a51d919/0b0235b9-51a1-43ef-b4dc-1571355ec5aa_rw_600.png?h=6885d1b18edc19b1c1290d12bc4a07a9" alt="Rep podcast">
+        </div>
+
+        <div class="audio-text">
+          <h2>Rep</h2>
+
+          <p>
+            Rep is a bold, wide-ranging podcast, brought to you by journalist Noor Tagouri. Noor began by examining the misrepresentation of Muslims in US media and how this impacts American culture. She discovered a fuller exploration of the ever-evolving story of America, which challenged the stories we’ve known and revealed how the stories we tell affect all of us.
+          </p>
+
+          <p>
+            Produced by Noran.<br>
+            2024
+          </p>
+
+          <p>
+            <a href="https://www.ays.media/rep/freetorun" target="_blank" rel="noopener noreferrer">12. Free to Run ft. 3 Afghan Women Runners</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="audio-entry">
+        <div class="audio-image">
+          <img src="https://cdn.myportfolio.com/193e531d-b7ef-4851-b5d8-5d9c2a51d919/23ae3ad4-d0b7-4f4b-bdba-8cc40f55b5bf_rw_1200.png?h=2332ee111ea52a33fa1fbab69c07cb15" alt="From Cairo to Brooklyn">
+        </div>
+
+        <div class="audio-text">
+          <h2>From Cairo to Brooklyn: The Arab American Experience</h2>
+
+          <p>
+            This is a story of the experience of Arab Americans in the U.S. I interview Rehab Morsi, and her son Hussein Mohamed, about their experience for the past 20-something years in the U.S. I also interview Iraqi-American playwright Heather Raffo, who contextualizes the Arab-American experience from her point of view.
+          </p>
+
+          <p>
+            <a href="https://soundcloud.com/noranmorsi/from-cairo-to-brooklyn-the-arab-american-experience" target="_blank" rel="noopener noreferrer">Listen on SoundCloud</a>
+          </p>
+
+          <p>
+            <a href="https://www.aucegypt.edu/news/student-podcasts-family-stories-make-it-broadcast-competition-finals" target="_blank" rel="noopener noreferrer">BEA Student Audio Competition Award of Excellence</a><br>
+            <a href="https://www.facebook.com/TheAuthorsChallenge/videos/2488855071426787/" target="_blank" rel="noopener noreferrer">First Place Winner of AUC’s The Author’s Challenge Podcast Contest</a>
+          </p>
+
+          <p>
+            Produced, narrated, and edited by Noran.<br>
+            2020
+          </p>
+        </div>
+      </article>
+
+      <article class="audio-entry">
+        <div class="audio-image">
+          <img src="https://cdn.myportfolio.com/193e531d-b7ef-4851-b5d8-5d9c2a51d919/c3711822-ee73-4777-8a48-bc91c1c9882b_rw_1200.png?h=135b2bcc287b2fe5528776dd042280cc" alt="Shooting Under the Occupation">
+        </div>
+
+        <div class="audio-text">
+          <h2>Shooting Under the Occupation: A Story of Palestinian Film</h2>
+
+          <p>
+            Palestinian female filmmakers are at an interesting intersection in the film industry. This documentary tells the story of what threats face the Palestinian film industry in this day and age.
+          </p>
+
+          <p>
+            <a href="https://soundcloud.com/noranmorsi/audio-feature-final" target="_blank" rel="noopener noreferrer">Listen on SoundCloud</a>
+          </p>
+
+          <p>
+            Produced, narrated, and edited by Noran.<br>
+            2019
+          </p>
+        </div>
+      </article>
+
+    </section>
+
+    <section class="you-may-like">
+      <h2>You may also like</h2>
+
+      <div class="related-grid">
+        <a href="egyptian-streets-podcast.html" class="related-card">
+          <img src="../images/egyptian-streets-podcast.png" alt="The Egyptian Streets Podcast">
+          <div class="related-overlay">
+            <div class="related-box">
+              <h3>The Egyptian Streets Podcast</h3>
+              <p>2021</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="drew-barrymore-show.html" class="related-card">
+          <img src="../images/drew-barrymore-show.png" alt="The Drew Barrymore Show">
+          <div class="related-overlay">
+            <div class="related-box">
+              <h3>The Drew Barrymore Show</h3>
+              <p>2025</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+const links = document.querySelectorAll('a');
+
+links.forEach(link => {
+  link.addEventListener('click', () => {
+    links.forEach(l => l.classList.remove('clicked-link'));
+    link.classList.add('clicked-link');
+  });
+});
+</script>
+
+</body>
+</html>
