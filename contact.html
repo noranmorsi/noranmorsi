@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Contact — Noran Morsi</title>
+
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces&display=swap" rel="stylesheet">
+
+  <style>
+    @font-face {
+      font-family: 'Six Hands Rough';
+      src: url('fonts/SixHandsRough.woff2') format('woff2');
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Fraunces', serif;
+      background: #fff;
+      color: #000;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      padding: 2rem 1.5rem;
+      border-right: 1px solid black;
+    }
+
+    .nav a {
+      font-family: 'Six Hands Rough';
+      font-size: 2.5rem;
+      display: block;
+    }
+
+    .main {
+      padding: 3rem;
+      max-width: 700px;
+    }
+
+    h1 {
+      font-family: 'Six Hands Rough';
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    input, textarea {
+      border: none;
+      border-bottom: 1px solid black;
+      padding: 0.5rem 0;
+      font-family: inherit;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: none;
+    }
+
+    button {
+      margin-top: 1rem;
+      background: none;
+      border: 1px solid black;
+      padding: 0.75rem;
+      cursor: pointer;
+      font-family: 'Six Hands Rough';
+      font-size: 1.2rem;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: black;
+      color: white;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="layout">
+
+  <aside class="sidebar">
+    <nav class="nav">
+      <a href="index.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <h1>Contact</h1>
+
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="text" name="name" placeholder="Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <textarea name="message" placeholder="Message" required></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+
+  </main>
+
+</div>
+</body>
+</html>
