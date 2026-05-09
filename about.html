@@ -237,6 +237,47 @@
         display: none;
       }
     }
+
+    .press-section {
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid black;
+}
+
+.press-title {
+  font-family: 'Six Hands Rough', serif;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.press-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.press-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid black;
+}
+
+.press-year {
+  font-family: 'Six Hands Rough', serif;
+  font-size: 2rem;
+  color: var(--selected-green);
+}
+
+.press-headline {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.press-source {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
   </style>
 </head>
 
@@ -302,6 +343,46 @@
         </div>
       </div>
     </section>
+
+    <section class="press-section">
+  <h2 class="press-title">Press</h2>
+
+  <div class="press-list">
+
+    <a href="https://www.printmag.com/culturally-related-design/noran-morsi-ramadan-illustration-series/" target="_blank" class="press-item">
+      <div class="press-year">2025</div>
+      <div class="press-content">
+        <div class="press-headline">Ramadan Illustration Series</div>
+        <div class="press-source">PRINT Magazine</div>
+      </div>
+    </a>
+
+    <a href="https://cairoscene.com/artsandculture/egyptian-illustrator-noran-morsi-captures-ramadan-in-new-york" target="_blank" class="press-item">
+      <div class="press-year">2025</div>
+      <div class="press-content">
+        <div class="press-headline">Ramadan in New York City</div>
+        <div class="press-source">CairoScene</div>
+      </div>
+    </a>
+
+    <a href="https://kandaka.blog/2025/03/28/ramadan-in-new-york-city/" target="_blank" class="press-item">
+      <div class="press-year">2025</div>
+      <div class="press-content">
+        <div class="press-headline">Ramadan in New York City</div>
+        <div class="press-source">Kandaka</div>
+      </div>
+    </a>
+
+    <a href="https://awimnews.com/egyptian-women-at-the-heart-of-podcast-boom/" target="_blank" class="press-item">
+      <div class="press-year">2021</div>
+      <div class="press-content">
+        <div class="press-headline">Egyptian Women at the Heart of Podcast Boom</div>
+        <div class="press-source">AWIM News</div>
+      </div>
+    </a>
+
+  </div>
+</section>
   </main>
 
 </div>
