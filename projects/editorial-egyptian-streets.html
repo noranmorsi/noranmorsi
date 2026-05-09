@@ -213,6 +213,62 @@
       margin: 1.5rem 0;
     }
 
+    .article-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.article-card {
+  border-top: 1px solid black;
+  padding-top: 1rem;
+}
+
+.article-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.article-card-text h2 {
+  font-size: 1.35rem;
+  line-height: 1.15;
+  font-weight: 500;
+  margin: 0.4rem 0 0.75rem;
+}
+
+.article-date {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.citation-list {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid black;
+  font-size: 0.9rem;
+}
+
+.citation-list div {
+  font-family: 'Six Hands Rough', serif;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--selected-green);
+  margin-bottom: 0.5rem;
+}
+
+.citation-list a {
+  display: block;
+  margin-bottom: 0.45rem;
+}
+
+@media (max-width: 900px) {
+  .article-grid {
+    grid-template-columns: 1fr;
+  }
+}
     .image-grid img {
       aspect-ratio: 4 / 3;
       height: 100%;
@@ -380,68 +436,210 @@
   <main class="main">
     <a href="../index.html#home" class="back-link">← Back to projects</a>
 
-    <header class="project-header">
-      <h1 class="project-title">Project Title Goes Here</h1>
+ <header class="project-header">
+  <h1 class="project-title">Reporting for Egyptian Streets</h1>
 
-      <div class="project-meta">
-        Illustration • 2025
+  <div class="project-meta">
+    Reporting • 2020–2021
+  </div>
+
+  <p class="project-description">
+    A selected archive of reporting, essays, interviews, and cultural criticism published during my year at Egyptian Streets, where I wrote more than 100 articles across culture, politics, identity, food, entertainment, and opinion.
+  </p>
+</header>
+
+<section class="project-section">
+  <div class="article-grid">
+
+    <article class="article-card">
+      <img src="../images/egyptianstreets/hijab-burkini-turban.png" alt="The Hijab, the Burkini and the Turban article screenshot">
+
+      <div class="article-card-text">
+        <div class="article-date">July 23, 2020</div>
+        <h2>
+          <a href="https://egyptianstreets.com/2020/07/23/the-hijab-the-burkini-and-the-turban-on-policing-womens-attire/" target="_blank" rel="noopener noreferrer">
+            The Hijab, the Burkini and the Turban: On Elitism and Policing Women’s Attire in Egypt
+          </a>
+        </h2>
+
+        <div class="citation-list">
+          <div>Cited in:</div>
+          <a href="https://www.taylorfrancis.com/chapters/edit/10.4324/9781003019992-21/normalization-hijab-sherifa-zuhur" target="_blank" rel="noopener noreferrer">
+            The Normalization of Hijab: Islamic Reveiling in Cairo
+          </a>
+          <a href="https://www.proquest.com/openview/1b1184f50306d45d900eb78223e8b492/1?pq-origsite=gscholar&cbl=2026366&diss=y" target="_blank" rel="noopener noreferrer">
+            Dressing the Feminine Body in Modern Egypt: Fashion, Faith and Class
+          </a>
+          <a href="https://books.google.com.eg/books?hl=en&lr=&id=UpGZEAAAQBAJ&oi=fnd&pg=PT352&ots=bF2v0ruyRn&sig=6y7ocT9ZEmHHEO9zbgo7Q_T-zs4&redir_esc=y#v=onepage&q&f=false" target="_blank" rel="noopener noreferrer">
+            Islamic Reveiling in Cairo
+          </a>
+        </div>
       </div>
+    </article>
 
-      <p class="project-description">
-        Write a short description of the project here. This can explain the assignment,
-        publication, reporting context, visual approach, or your role.
-      </p>
-    </header>
+    <article class="article-card">
+      <img src="../images/egyptianstreets/revenge-porn-group.png" alt="AUC Graduate Exposes Student Revenge Porn Group article screenshot">
 
-    <section class="project-section">
-      <div class="image-full">
-        <img src="../images/project-image-1.png" alt="Describe this image">
-        <div class="caption">Optional caption goes here.</div>
+      <div class="article-card-text">
+        <div class="article-date">September 7, 2020</div>
+        <h2>
+          <a href="https://egyptianstreets.com/2020/09/07/auc-graduate-exposes-student-revenge-porn-group/" target="_blank" rel="noopener noreferrer">
+            AUC Graduate Exposes Student Revenge Porn Group
+          </a>
+        </h2>
+
+        <div class="citation-list">
+          <div>Cited in:</div>
+          <a href="https://afkarjournal.wordpress.com/wp-content/uploads/2024/12/blakecourtland-double-edged-sword.pdf" target="_blank" rel="noopener noreferrer">
+            Double-Edged Sword: #AnaKaman, Assault Police, and the Fairmont Case
+          </a>
+        </div>
       </div>
+    </article>
 
-      <p>
-        Add body text here. This can describe the process, reporting, production,
-        illustration method, research, editorial context, or outcome.
-      </p>
-    </section>
+    <article class="article-card">
+      <img src="../images/egyptianstreets/cairo-ice-cream.png" alt="Mapping Desserts article screenshot">
 
-    <section class="project-section">
-      <div class="image-grid">
-        <img src="../images/project-image-2.png" alt="Describe this image">
-        <img src="../images/project-image-3.png" alt="Describe this image">
+      <div class="article-card-text">
+        <div class="article-date">October 14, 2020</div>
+        <h2>
+          <a href="https://egyptianstreets.com/2020/10/14/map-the-best-ice-cream-in-cairo/" target="_blank" rel="noopener noreferrer">
+            Mapping Desserts: the Cairo Republic of Ice Cream
+          </a>
+        </h2>
       </div>
+    </article>
 
-      <p>
-        Add another paragraph here, or delete this whole section if the project only
-        needs one image and one description.
-      </p>
-    </section>
+    <article class="article-card">
+      <img src="../images/egyptianstreets/young-egyptian-americans.png" alt="U.S. Presidential Elections article screenshot">
 
-    <section class="you-may-like">
-      <h2>You may also like</h2>
-
-      <div class="related-grid">
-        <a href="another-project.html" class="related-card">
-          <img src="../images/another-project.png" alt="Another Project Title">
-          <div class="related-overlay">
-            <div class="related-box">
-              <h3>Another Project Title</h3>
-              <p>2024</p>
-            </div>
-          </div>
-        </a>
-
-        <a href="second-project.html" class="related-card">
-          <img src="../images/second-project.png" alt="Second Project Title">
-          <div class="related-overlay">
-            <div class="related-box">
-              <h3>Second Project Title</h3>
-              <p>2023</p>
-            </div>
-          </div>
-        </a>
+      <div class="article-card-text">
+        <div class="article-date">October 23, 2020</div>
+        <h2>
+          <a href="https://egyptianstreets.com/2020/10/23/u-s-presidential-elections-young-egyptian-americans-choose-between-fates/" target="_blank" rel="noopener noreferrer">
+            U.S. Presidential Elections: Young Egyptian Americans Choose Between Fates
+          </a>
+        </h2>
       </div>
-    </section>
+    </article>
+
+    <article class="article-card">
+      <img src="../images/egyptianstreets/alexander-saroukhan.png" alt="Alexander Saroukhan article screenshot">
+
+      <div class="article-card-text">
+        <div class="article-date">November 13, 2020</div>
+        <h2>
+          <a href="https://egyptianstreets.com/2020/11/13/alexander-sarokhan-legendary-political-cartoonist-of-the-1900s/" target="_blank" rel="noopener noreferrer">
+            Alexander Saroukhan: Remembering the Legendary Political Cartoonist of the 1900s
+          </a>
+        </h2>
+      </div>
+    </article>
+
+    <article class="article-card">
+      <img src="../images/egyptianstreets/al-mishwar-al-akhir.png" alt="Al-Mishwar al-Akhir article screenshot">
+
+      <div class="article-card-text">
+        <div class="article-date">December 13, 2020</div>
+        <h2>
+          <a href="https://egyptianstreets.com/2020/12/13/al-mishwar-al-akhir-domestic-abuse-and-internalized-misogyny-stare-us-in-the-face/" target="_blank" rel="noopener noreferrer">
+            “Al-Mishwar al-‘Akhir”: Domestic Abuse and Internalized Misogyny Stare Us in the Face
+          </a>
+        </h2>
+      </div>
+    </article>
+
+    <article class="article-card">
+      <img src="../images/egyptianstreets/hijabis-workplace.png" alt="Hijabis Demand Justice in the Egyptian Workplace article screenshot">
+
+      <div class="article-card-text">
+        <div class="article-date">January 31, 2021</div>
+        <h2>
+          <a href="https://egyptianstreets.com/2021/01/31/hijabis-ask-for-justice-in-the-egyptian-workplace/" target="_blank" rel="noopener noreferrer">
+            Hijabis Demand Justice in the Egyptian Workplace
+          </a>
+        </h2>
+      </div>
+    </article>
+
+    <article class="article-card">
+      <img src="../images/egyptianstreets/elmahaba-center.png" alt="Elmahaba Center article screenshot">
+
+      <div class="article-card-text">
+        <div class="article-date">April 1, 2021</div>
+        <h2>
+          <a href="https://egyptianstreets.com/2021/04/01/elmahaba-center-uniting-coptic-egyptians-in-nashvilles-little-minya/" target="_blank" rel="noopener noreferrer">
+            Elmahaba Center: Uniting Coptic Egyptians in Nashville’s Little Minya
+          </a>
+        </h2>
+      </div>
+    </article>
+
+    <article class="article-card">
+      <img src="../images/egyptianstreets/from-cairo-with-love.png" alt="From Cairo with Love article screenshot">
+
+      <div class="article-card-text">
+        <div class="article-date">May 31, 2021</div>
+        <h2>
+          <a href="https://egyptianstreets.com/2021/05/31/from-cairo-with-love-my-fabricated-coming-of-age/" target="_blank" rel="noopener noreferrer">
+            From Cairo with Love: My Fabricated Coming of Age
+          </a>
+        </h2>
+      </div>
+    </article>
+
+    <article class="article-card">
+      <img src="../images/egyptianstreets/yussef-el-guindi.png" alt="Yussef El Guindi article screenshot">
+
+      <div class="article-card-text">
+        <div class="article-date">July 31, 2021</div>
+        <h2>
+          <a href="https://egyptianstreets.com/2021/07/31/yussef-el-guindi-from-acting-to-playwriting-an-egyptian-british-and-american-life/" target="_blank" rel="noopener noreferrer">
+            Yussef El Guindi: From Acting to Playwriting, an Egyptian, British and American Life
+          </a>
+        </h2>
+
+        <div class="citation-list">
+          <div>Cited in:</div>
+          <a href="https://journals.ekb.eg/article_311766_f8f090f3326f2345792debd3232cf4e5.pdf" target="_blank" rel="noopener noreferrer">
+            Journal of the Faculty of Arts, Aswan University, Volume 16, Issue 1
+          </a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+ 
+
+<section class="you-may-like">
+  <h2>You may also like</h2>
+
+  <div class="related-grid">
+
+    <a href="global-voices.html" class="related-card">
+      <img src="../images/global-voices.png" alt="Global Voices">
+      <div class="related-overlay">
+        <div class="related-box">
+          <h3>Global Voices</h3>
+          <p>2023</p>
+        </div>
+      </div>
+    </a>
+
+    <a href="atlas-obscura.html" class="related-card">
+      <img src="../images/atlas-obscura.png" alt="Atlas Obscura">
+      <div class="related-overlay">
+        <div class="related-box">
+          <h3>Atlas Obscura</h3>
+          <p>2024</p>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
   </main>
 </div>
 
