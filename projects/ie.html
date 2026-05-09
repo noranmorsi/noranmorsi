@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Project Title — Noran Morsi</title>
+  <title>Production for Inside Edition — Noran Morsi</title>
 
   <link rel="icon" type="image/png" href="../favicon.png">
 
@@ -181,7 +181,33 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 1.5rem;
-    }
+    }.inside-edition-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 0.35rem;
+  align-items: stretch;
+  margin: 1.5rem 0;
+}
+
+.inside-edition-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.inside-horizontal {
+  aspect-ratio: 16 / 9;
+}
+
+.inside-vertical {
+  aspect-ratio: 4 / 5;
+}
+
+@media (max-width: 900px) {
+  .inside-edition-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
     .project-description {
       font-size: 1.25rem;
@@ -380,68 +406,61 @@
   <main class="main">
     <a href="../index.html#home" class="back-link">← Back to projects</a>
 
-    <header class="project-header">
-      <h1 class="project-title">Project Title Goes Here</h1>
+  <header class="project-header">
+  <h1 class="project-title">Inside Edition</h1>
 
-      <div class="project-meta">
-        Illustration • 2025
+  <div class="project-meta">
+    TV Production • 2024
+  </div>
+
+  <p class="project-description">
+    Operated prompter and assisted with production during The Drew Barrymore Show hiatus, supporting daily broadcast workflows and contributing to the execution of a fast-paced syndicated newsmagazine show.
+  </p>
+</header>
+
+<section class="project-section">
+  <div class="video-wrap">
+    <iframe 
+      src="https://www.youtube.com/embed/hJIHB_io6rA"
+      title="TV production reel"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+<section class="project-section">
+  <div class="inside-edition-grid">
+    <img class="inside-horizontal" src="../images/inside-edition/image1.jpg" alt="Inside Edition production photo 1">
+    <img class="inside-vertical" src="../images/inside-edition/image2.jpg" alt="Inside Edition production photo 2">
+  </div>
+</section>
+
+<section class="you-may-like">
+  <h2>You may also like</h2>
+
+  <div class="related-grid">
+    <a href="drew-barrymore-show.html" class="related-card">
+      <img src="../images/drew.png" alt="The Drew Barrymore Show">
+      <div class="related-overlay">
+        <div class="related-box">
+          <h3>The Drew Barrymore Show</h3>
+          <p>TV Production • 2024</p>
+        </div>
       </div>
+    </a>
 
-      <p class="project-description">
-        Write a short description of the project here. This can explain the assignment,
-        publication, reporting context, visual approach, or your role.
-      </p>
-    </header>
-
-    <section class="project-section">
-      <div class="image-full">
-        <img src="../images/project-image-1.png" alt="Describe this image">
-        <div class="caption">Optional caption goes here.</div>
+    <a href="late-show-stephen-colbert.html" class="related-card">
+      <img src="../images/late-show.png" alt="The Late Show with Stephen Colbert">
+      <div class="related-overlay">
+        <div class="related-box">
+          <h3>The Late Show with Stephen Colbert</h3>
+          <p>TV Production • 2024</p>
+        </div>
       </div>
-
-      <p>
-        Add body text here. This can describe the process, reporting, production,
-        illustration method, research, editorial context, or outcome.
-      </p>
-    </section>
-
-    <section class="project-section">
-      <div class="image-grid">
-        <img src="../images/project-image-2.png" alt="Describe this image">
-        <img src="../images/project-image-3.png" alt="Describe this image">
-      </div>
-
-      <p>
-        Add another paragraph here, or delete this whole section if the project only
-        needs one image and one description.
-      </p>
-    </section>
-
-    <section class="you-may-like">
-      <h2>You may also like</h2>
-
-      <div class="related-grid">
-        <a href="another-project.html" class="related-card">
-          <img src="../images/another-project.png" alt="Another Project Title">
-          <div class="related-overlay">
-            <div class="related-box">
-              <h3>Another Project Title</h3>
-              <p>2024</p>
-            </div>
-          </div>
-        </a>
-
-        <a href="second-project.html" class="related-card">
-          <img src="../images/second-project.png" alt="Second Project Title">
-          <div class="related-overlay">
-            <div class="related-box">
-              <h3>Second Project Title</h3>
-              <p>2023</p>
-            </div>
-          </div>
-        </a>
-      </div>
-    </section>
+    </a>
+  </div>
+</section>
   </main>
 </div>
 
