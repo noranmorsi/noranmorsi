@@ -125,7 +125,17 @@
       line-height: 1;
       display: block;
     }
+.video-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 1.5rem 0;
+}
 
+.video-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
     .social-links {
       margin-top: 1.5rem;
       display: flex;
@@ -380,68 +390,63 @@
   <main class="main">
     <a href="../index.html#home" class="back-link">← Back to projects</a>
 
-    <header class="project-header">
-      <h1 class="project-title">Project Title Goes Here</h1>
+  <header class="project-header">
+  <h1 class="project-title">The Drew Barrymore Show</h1>
 
-      <div class="project-meta">
-        Illustration • 2025
+  <div class="project-meta">
+    TV Production • 2024
+  </div>
+
+  <p class="project-description">
+    Segment researcher and producer’s assistant supporting preparation for live television segments with celebrity guests. Work included research, guest preparation materials, production support, and segment coordination.
+  </p>
+</header>
+
+<section class="project-section">
+  <div class="video-wrap">
+    <iframe 
+      src="https://www.youtube.com/embed/hJIHB_io6rA"
+      title="The Drew Barrymore Show reel"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+<section class="project-section">
+  <div class="image-grid">
+    <img src="../images/drew/image1.jpg" alt="The Drew Barrymore Show production photo 1">
+    <img src="../images/drew/image2.jpg" alt="The Drew Barrymore Show production photo 2">
+    <img src="../images/drew/image3.jpg" alt="The Drew Barrymore Show production photo 3">
+    <img src="../images/drew/image4.jpg" alt="The Drew Barrymore Show production photo 4">
+  </div>
+</section>
+
+<section class="you-may-like">
+  <h2>You may also like</h2>
+
+  <div class="related-grid">
+    <a href="late-show-stephen-colbert.html" class="related-card">
+      <img src="../images/late-show.png" alt="The Late Show with Stephen Colbert">
+      <div class="related-overlay">
+        <div class="related-box">
+          <h3>The Late Show with Stephen Colbert</h3>
+          <p>TV Production • 2024</p>
+        </div>
       </div>
+    </a>
 
-      <p class="project-description">
-        Write a short description of the project here. This can explain the assignment,
-        publication, reporting context, visual approach, or your role.
-      </p>
-    </header>
-
-    <section class="project-section">
-      <div class="image-full">
-        <img src="../images/project-image-1.png" alt="Describe this image">
-        <div class="caption">Optional caption goes here.</div>
+    <a href="audio-production.html" class="related-card">
+      <img src="../images/audio-production.png" alt="Audio Production">
+      <div class="related-overlay">
+        <div class="related-box">
+          <h3>Audio Production</h3>
+          <p>Audio • 2021–2024</p>
+        </div>
       </div>
-
-      <p>
-        Add body text here. This can describe the process, reporting, production,
-        illustration method, research, editorial context, or outcome.
-      </p>
-    </section>
-
-    <section class="project-section">
-      <div class="image-grid">
-        <img src="../images/project-image-2.png" alt="Describe this image">
-        <img src="../images/project-image-3.png" alt="Describe this image">
-      </div>
-
-      <p>
-        Add another paragraph here, or delete this whole section if the project only
-        needs one image and one description.
-      </p>
-    </section>
-
-    <section class="you-may-like">
-      <h2>You may also like</h2>
-
-      <div class="related-grid">
-        <a href="another-project.html" class="related-card">
-          <img src="../images/another-project.png" alt="Another Project Title">
-          <div class="related-overlay">
-            <div class="related-box">
-              <h3>Another Project Title</h3>
-              <p>2024</p>
-            </div>
-          </div>
-        </a>
-
-        <a href="second-project.html" class="related-card">
-          <img src="../images/second-project.png" alt="Second Project Title">
-          <div class="related-overlay">
-            <div class="related-box">
-              <h3>Second Project Title</h3>
-              <p>2023</p>
-            </div>
-          </div>
-        </a>
-      </div>
-    </section>
+    </a>
+  </div>
+</section>
   </main>
 </div>
 
