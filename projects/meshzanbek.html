@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Project Title — Noran Morsi</title>
+  <title>Mesh Zanbek — Noran Morsi</title>
 
   <link rel="icon" type="image/png" href="../favicon.png">
 
@@ -26,9 +26,7 @@
       --transition: all 0.3s ease;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -44,18 +42,14 @@
       transition: var(--transition);
     }
 
+    a:hover,
     a:active {
       color: var(--click-green);
-    }
-
-    a.clicked-link {
-      color: var(--selected-green);
     }
 
     img {
       width: 100%;
       display: block;
-      object-fit: cover;
     }
 
     .layout {
@@ -91,20 +85,13 @@
       position: absolute;
       inset: 0;
       height: 100%;
+      object-fit: cover;
       transition: opacity 0.3s;
     }
 
-    .photo-hover {
-      opacity: 0;
-    }
-
-    .brand-link:hover .photo-hover {
-      opacity: 1;
-    }
-
-    .brand-link:hover .photo-default {
-      opacity: 0;
-    }
+    .photo-hover { opacity: 0; }
+    .brand-link:hover .photo-hover { opacity: 1; }
+    .brand-link:hover .photo-default { opacity: 0; }
 
     .tagline {
       font-family: 'Six Hands Rough', serif;
@@ -198,30 +185,72 @@
       font-size: 1.1rem;
     }
 
-    .image-full {
+    .section-title {
+      font-family: 'Six Hands Rough', serif;
+      font-size: 3rem;
+      line-height: 1;
+      margin: 0 0 1.5rem;
+      color: var(--selected-green);
+    }
+
+    .video-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
       margin: 1.5rem 0;
+      border: 1px solid black;
     }
 
-    .image-full img {
-      height: auto;
+    .video-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
-    .image-grid {
+    .photo-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0.35rem;
       margin: 1.5rem 0;
     }
 
-    .image-grid img {
-      aspect-ratio: 4 / 3;
-      height: 100%;
+    .photo-grid img {
+      aspect-ratio: 570 / 860;
       object-fit: cover;
     }
 
-    .caption {
-      font-size: 0.85rem;
-      margin-top: 0.4rem;
+    .link-list {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid black;
+    }
+
+    .link-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 1.5rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid black;
+    }
+
+    .link-label {
+      font-family: 'Six Hands Rough', serif;
+      font-size: 1.8rem;
+      line-height: 1;
+      color: var(--selected-green);
+    }
+
+    .link-title {
+      font-size: 1.2rem;
+      line-height: 1.2;
+      font-weight: 500;
+    }
+
+    .link-note {
+      font-size: 0.95rem;
+      margin-top: 0.35rem;
     }
 
     .you-may-like {
@@ -319,7 +348,6 @@
       }
 
       .nav {
-        display: flex;
         flex-direction: row;
         gap: 1.5rem;
         flex-wrap: wrap;
@@ -333,9 +361,14 @@
         padding: 2rem 1.5rem;
       }
 
-      .image-grid,
+      .photo-grid,
       .related-grid {
         grid-template-columns: 1fr;
+      }
+
+      .link-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
       }
     }
   </style>
@@ -345,7 +378,7 @@
 <div class="layout">
 
   <aside class="sidebar">
-    <a href="../index.html#home" class="brand-link">
+    <a href="../index.html" class="brand-link">
       <div class="brand-photo">
         <img class="photo-default" src="../images/noran-1.png" alt="Noran Morsi">
         <img class="photo-hover" src="../images/noran-2.png" alt="Noran Morsi alternate portrait">
@@ -357,9 +390,9 @@
     </div>
 
     <nav class="nav">
-      <a href="../index.html#home">Projects</a>
-      <a href="../index.html#about">About</a>
-      <a href="../index.html#contact">Contact</a>
+      <a href="../index.html">Projects</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
     </nav>
 
     <div class="social-links">
@@ -378,65 +411,114 @@
   </aside>
 
   <main class="main">
-    <a href="../index.html#home" class="back-link">← Back to projects</a>
+    <a href="../index.html" class="back-link">← Back to projects</a>
 
     <header class="project-header">
-      <h1 class="project-title">Project Title Goes Here</h1>
+      <h1 class="project-title">Mesh Zanbek: The Report</h1>
 
       <div class="project-meta">
-        Illustration • 2025
+        Theatre / Writing / Directing • 2021
       </div>
 
       <p class="project-description">
-        Write a short description of the project here. This can explain the assignment,
-        publication, reporting context, visual approach, or your role.
+        “The Report” is a play I wrote as part of Mesh Zanbek, a theatre series about sexual harassment in Egypt. I also directed the theatre performance. The work was later published by AUC Press in <em>It’s Not Your Fault: Five New Plays on Sexual Harassment in Egypt</em>.
       </p>
     </header>
 
     <section class="project-section">
-      <div class="image-full">
-        <img src="../images/project-image-1.png" alt="Describe this image">
-        <div class="caption">Optional caption goes here.</div>
-      </div>
+      <h2 class="section-title">Watch the play</h2>
 
-      <p>
-        Add body text here. This can describe the process, reporting, production,
-        illustration method, research, editorial context, or outcome.
-      </p>
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/3pf3vs89Qls"
+          title="Mesh Zanbek - The Report"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
     </section>
 
     <section class="project-section">
-      <div class="image-grid">
-        <img src="../images/project-image-2.png" alt="Describe this image">
-        <img src="../images/project-image-3.png" alt="Describe this image">
-      </div>
+      <h2 class="section-title">Production photos</h2>
 
-      <p>
-        Add another paragraph here, or delete this whole section if the project only
-        needs one image and one description.
-      </p>
+      <div class="photo-grid">
+        <img src="../images/mesh-zanbek/image1.jpg" alt="Mesh Zanbek production photo 1">
+        <img src="../images/mesh-zanbek/image2.jpg" alt="Mesh Zanbek production photo 2">
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h2 class="section-title">Publication, reviews & citations</h2>
+
+      <div class="link-list">
+        <a href="https://aucpress.com/9781649032416/" target="_blank" rel="noopener noreferrer" class="link-item">
+          <div class="link-label">Book</div>
+          <div>
+            <div class="link-title">It’s Not Your Fault: Five New Plays on Sexual Harassment in Egypt</div>
+            <div class="link-note">Published by AUC Press.</div>
+          </div>
+        </a>
+
+        <a href="https://www.thenationalnews.com/arts-culture/books/2023/03/22/its-not-your-fault-auc-publishes-book-of-plays-on-sexual-harassment-in-egypt/" target="_blank" rel="noopener noreferrer" class="link-item">
+          <div class="link-label">Review</div>
+          <div>
+            <div class="link-title">The National: AUC publishes book of plays on sexual harassment in Egypt</div>
+          </div>
+        </a>
+
+        <a href="https://www.aucegypt.edu/news/msh-zanbik-play-exploring-sexual-harassment-showing-soon" target="_blank" rel="noopener noreferrer" class="link-item">
+          <div class="link-label">Review</div>
+          <div>
+            <div class="link-title">AUC: Msh Zanbik, a play exploring sexual harassment</div>
+          </div>
+        </a>
+
+        <a href="https://www.aucegypt.edu/speakup/msh-zanbik-theatre-performance" target="_blank" rel="noopener noreferrer" class="link-item">
+          <div class="link-label">Directed</div>
+          <div>
+            <div class="link-title">Msh Zanbik Theatre Performance</div>
+            <div class="link-note">Theatre performance directed by Noran.</div>
+          </div>
+        </a>
+
+        <a href="https://muse.jhu.edu/article/845741/summary" target="_blank" rel="noopener noreferrer" class="link-item">
+          <div class="link-label">Reviewed</div>
+          <div>
+            <div class="link-title">MSH Zanbek (Not Your Fault), Theatre Journal</div>
+            <div class="link-note">Johns Hopkins University Press. Restricted access.</div>
+          </div>
+        </a>
+
+        <a href="https://afkarjournal.wordpress.com/wp-content/uploads/2024/12/blakecourtland-double-edged-sword.pdf" target="_blank" rel="noopener noreferrer" class="link-item">
+          <div class="link-label">Cited</div>
+          <div>
+            <div class="link-title">Double-Edged Sword: #AnaKaman, Assault Police, and the Fairmont Case</div>
+            <div class="link-note">Afkar: The Undergraduate Journal of Middle East Studies, Vol. 6, No. 2.</div>
+          </div>
+        </a>
+      </div>
     </section>
 
     <section class="you-may-like">
       <h2>You may also like</h2>
 
       <div class="related-grid">
-        <a href="another-project.html" class="related-card">
-          <img src="../images/another-project.png" alt="Another Project Title">
+        <a href="comics.html" class="related-card">
+          <img src="../images/comics.png" alt="Comics">
           <div class="related-overlay">
             <div class="related-box">
-              <h3>Another Project Title</h3>
-              <p>2024</p>
+              <h3>Comics</h3>
+              <p>2023</p>
             </div>
           </div>
         </a>
 
-        <a href="second-project.html" class="related-card">
-          <img src="../images/second-project.png" alt="Second Project Title">
+        <a href="editorial-egyptian-streets.html" class="related-card">
+          <img src="../images/editorial-egyptian-streets.png" alt="Editorial — Egyptian Streets">
           <div class="related-overlay">
             <div class="related-box">
-              <h3>Second Project Title</h3>
-              <p>2023</p>
+              <h3>Editorial — Egyptian Streets</h3>
+              <p>2020</p>
             </div>
           </div>
         </a>
