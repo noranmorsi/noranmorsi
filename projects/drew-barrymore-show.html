@@ -101,12 +101,19 @@
     }
 
     /* ✅ FIXED: scoped nav so it doesn't affect sidebar */
-    .gallery {
-      position: relative;
-      width: 100%;
-      max-width: 520px;
-      text-align: center;
-    }
+  .gallery {
+  position: relative;
+  width: 100%;
+  max-width: none;   /* removes the 520px limit */
+  text-align: center;
+}
+
+.frame img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
 
     .frame img {
       width: 100%;
