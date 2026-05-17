@@ -267,6 +267,31 @@
       z-index: 1;
     }
 
+    .book {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.page img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+}
+
+.page-number {
+  margin-top: 8px;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.book button {
+  margin: 10px;
+  padding: 8px 12px;
+  border: 1px solid black;
+  background: white;
+  cursor: pointer;
+}
     .related-overlay {
       position: absolute;
       inset: 0;
@@ -393,22 +418,17 @@
     </header>
 
     <section class="project-section">
-      <div class="image-full">
-        <img src="../images/60hours/image1.jpg" alt="Describe this image">
-                <img src="../images/60hours/image2.jpg" alt="Describe this image">
+      <div class="book">
+  <button onclick="prevPage()">‹ Prev</button>
 
-                <img src="../images/60hours/image3.jpg" alt="Describe this image">
-        <img src="../images/60hours/image4.jpg" alt="Describe this image">
-        <img src="../images/60hours/image5.jpg" alt="Describe this image">
-        <img src="../images/60hours/image6.jpg" alt="Describe this image">
-        <img src="../images/60hours/image7.jpg" alt="Describe this image">
-        <img src="../images/60hours/image8.jpg" alt="Describe this image">
-        <img src="../images/60hours/image9.jpg" alt="Describe this image">
-                <img src="../images/60hours/image10.jpg" alt="Describe this image">
+  <div class="page">
+    <img id="pageImage" />
+    <div class="page-number" id="pageNumber"></div>
+  </div>
 
-
-      </div>
-
+  <button onclick="nextPage()">Next ›</button>
+</div>
+      
     </section>
 
 
@@ -450,7 +470,41 @@ links.forEach(link => {
     link.classList.add('clicked-link');
   });
 });
+
+  const pages = [
+  "../images/60hours/image1.jpg",
+  "../images/60hours/image2.jpg",
+  "../images/60hours/image3.jpg",
+      "../images/60hours/image4.jpg",
+      "../images/60hours/image5.jpg",
+      "../images/60hours/image6.jpg",
+      "../images/60hours/image7.jpg",
+      "../images/60hours/image8.jpg",
+      "../images/60hours/image9.jpg",
+      "../images/60hours/image10.jpg"
+];
+
+let currentPage = 0;
+
+function renderPage() {
+  document.getElementById("pageImage").src = pages[currentPage];
+  document.getElementById("pageNumber").innerText =
+    `Page ${currentPage + 1} / ${pages.length}`;
+}
+
+function nextPage() {
+  if (currentPage < pages.length - 1) currentPage++;
+  renderPage();
+}
+
+function prevPage() {
+  if (currentPage > 0) currentPage--;
+  renderPage();
+}
+
+renderPage();
 </script>
 
+  
 </body>
 </html>
