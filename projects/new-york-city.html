@@ -198,6 +198,30 @@
       font-size: 1.1rem;
     }
 
+    .masonry-gallery {
+  column-count: 3;
+  column-gap: 12px;
+  width: 100%;
+}
+
+/* images flow vertically in columns */
+.masonry-gallery img {
+  width: 100%;
+  margin-bottom: 12px;
+  display: block;
+  break-inside: avoid;
+  border-radius: 8px; /* optional but nice for portfolios */
+} @media (max-width: 1000px) {
+  .masonry-gallery {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .masonry-gallery {
+    column-count: 1;
+  }
+}
     .image-full {
       margin: 1.5rem 0;
     }
@@ -392,8 +416,8 @@
       </p>
     </header>
 
-    <section class="project-section">
-      <div class="image-full">
+  <section class="masonry-gallery">
+
         <img src="../images/nyc/image1.jpg" >
           <img src="../images/nyc/image2.jpg" >
           <img src="../images/nyc/image3.jpg" >
