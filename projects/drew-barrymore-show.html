@@ -179,7 +179,47 @@
       padding-bottom: 2rem;
       margin-bottom: 2.5rem;
     }
+.gallery {
+  position: relative;
+  width: 100%;
+  max-width: 520px; /* optional: controls size */
+  text-align: center;
+}
 
+.frame img {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+}
+
+.nav {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.4);
+  color: white;
+  border: none;
+  font-size: 28px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.prev { left: -20px; }
+.next { right: -20px; }
+
+.previews {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.previews img {
+  width: 48%;
+  opacity: 0.35;
+  border-radius: 8px;
+}
     .project-title {
       font-size: clamp(2.6rem, 6vw, 5.5rem);
       line-height: 0.95;
@@ -416,17 +456,22 @@ grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     </header>
 
     <section class="project-section">
-  
-        <div class="masonry">
-        <img src="../images/tdbs/image1.jpg" alt="">
-             <img src="../images/tdbs/image2.jpg" alt="">
-      </div>
-            <div class="masonry">
-             <img src="../images/tdbs/image3.jpg" alt="">
-             <img src="../images/tdbs/image4.jpg" alt="">
-      </div>
+<div class="gallery">
 
-   
+  <button class="nav prev" onclick="changeImage(-1)">‹</button>
+
+  <div class="frame">
+    <img id="mainImage" />
+  </div>
+
+  <button class="nav next" onclick="changeImage(1)">›</button>
+
+  <div class="previews">
+    <img id="prevImg" />
+    <img id="nextImg" />
+  </div>
+
+</div>
     </section>
 
 
@@ -472,5 +517,28 @@ links.forEach(link => {
 });
 </script>
 
+  const images = [ 
+  "../images/tdbs/image1.jpg",
+  "../images/tdbs/image2.jpg",
+  "../images/tdbs/image3.jpg",
+  "../images/tdbs/image4.jpg"
+];
+
+let current = 0;
+
+function updateGallery() {
+  document.getElementById("mainImage").src = images[current];
+  document.getElementById("prevImg").src =
+    images[(current - 1 + images.length) % images.length];
+  document.getElementById("nextImg").src =
+    images[(current + 1) % images.length];
+}
+
+function changeImage(dir) {
+  current = (current + dir + images.length) % images.length;
+  updateGallery();
+}
+
+updateGallery();
 </body>
 </html>
