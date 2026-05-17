@@ -251,6 +251,32 @@
       background: #f2f2f2;
     }
 
+    .masonry-gallery {
+  column-count: 3;
+  column-gap: 12px;
+  width: 100%;
+}
+
+/* images flow vertically in columns */
+.masonry-gallery img {
+  width: 100%;
+  margin-bottom: 12px;
+  display: block;
+  break-inside: avoid;
+  border-radius: 8px; /* optional but nice for portfolios */
+}
+@media (max-width: 1000px) {
+.masonry-gallery {
+column-count: 2;
+}
+}
+
+@media (max-width: 600px) {
+.masonry-gallery {
+column-count: 1;
+}
+}
+
     .related-card img {
       width: 100%;
       height: 100%;
@@ -396,6 +422,9 @@
       <div class="image-full">
         <img src="../images/espodcast/1.png" >
 <img src="../images/espodcast/2.jpg">
+      </div>
+
+        <section class="masonry-gallery">
 <img src="../images/espodcast/3.jpg">
 <img src="../images/espodcast/4.jpg">
 <img src="../images/espodcast/5.jpg">
@@ -406,7 +435,11 @@
 <img src="../images/espodcast/10.jpg">
 <img src="../images/espodcast/11.jpg">
 <img src="../images/espodcast/12.jpg">
+        </section>
+          <div class="image-full">
 <img src="../images/espodcast/13.png">
+ </div>
+        <section class="masonry-gallery">
 <img src="../images/espodcast/14.jpg">
 <img src="../images/espodcast/15.jpg">
 <img src="../images/espodcast/16.jpg">
@@ -415,12 +448,14 @@
 <img src="../images/espodcast/19.jpg">
 <img src="../images/espodcast/20.jpg">
 <img src="../images/espodcast/21.jpg">
+        </section>
+           <div class="image-full">
 <img src="../images/espodcast/22.png">
 ```
-
+ </div>
         
       
-      </div>
+
 
   
     </section>
