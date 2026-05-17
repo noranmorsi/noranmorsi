@@ -237,6 +237,31 @@
       margin: 0 0 1.5rem;
     }
 
+    .masonry-gallery {
+  column-count: 3;
+  column-gap: 12px;
+  width: 100%;
+}
+
+/* images flow vertically in columns */
+.masonry-gallery img {
+  width: 100%;
+  margin-bottom: 12px;
+  display: block;
+  break-inside: avoid;
+  border-radius: 8px; /* optional but nice for portfolios */
+}
+@media (max-width: 1000px) {
+.masonry-gallery {
+column-count: 2;
+}
+}
+
+@media (max-width: 600px) {
+.masonry-gallery {
+column-count: 1;
+}
+}
     .related-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -392,8 +417,8 @@
       </p>
     </header>
 
-    <section class="project-section">
-      <div class="image-full">
+   <section class="masonry-gallery">
+    
         <img src="../images/cairo/image1.jpg" >
                <img src="../images/cairo/image2.jpg" >
                     <img src="../images/cairo/image3.jpg" >
@@ -403,7 +428,7 @@
                     <img src="../images/cairo/image7.jpg" >
                     <img src="../images/cairo/image8.jpg" >
                     <img src="../images/cairo/image9.jpg" >
-      </div>
+
 
    
     </section>
