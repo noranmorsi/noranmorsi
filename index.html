@@ -89,19 +89,15 @@
     .brand-link:hover .photo-hover { opacity: 1; }
     .brand-link:hover .photo-default { opacity: 0; }
 
-    .tagline {
+     .tagline {
       font-family: 'Six Hands Rough', serif;
       font-size: 2.2rem;
+      line-height: 1;
       margin-bottom: 2rem;
     }
 
-    .nav a {
-      font-family: 'Six Hands Rough', serif;
-      font-size: 3.1rem;
-      display: block;
-    }
-
-    .social-links {
+  
+  .social-links {
       margin-top: 1.5rem;
       display: flex;
       gap: 1rem;
@@ -243,16 +239,18 @@
         border-bottom: 1px solid black;
       }
 
-      .nav {
-        display: flex;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-      }
+       .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
 
-      .nav a {
-        font-size: 2.2rem;
-      }
-
+    .nav a {
+      font-family: 'Six Hands Rough', serif;
+      font-size: 3.1rem;
+      line-height: 1;
+      display: block;
+    }
       .grid {
         grid-template-columns: 1fr;
       }
