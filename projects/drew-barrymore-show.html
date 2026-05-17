@@ -213,6 +213,17 @@
       margin: 1.5rem 0;
     }
 
+    .photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.photo-grid img {
+  width: 100%;
+  height: auto;
+}
+
     .image-grid img {
       aspect-ratio: 4 / 3;
       height: 100%;
@@ -393,7 +404,8 @@
     </header>
 
     <section class="project-section">
-      <div class="image-full">
+  
+        <div class="photo-grid">
         <img src="../images/tdbs/image1.jpg" alt="">
              <img src="../images/tdbs/image2.jpg" alt="">
              <img src="../images/tdbs/image3.jpg" alt="">
