@@ -67,17 +67,49 @@
       flex-direction: column;
     }
 
-    /* YOUR EXISTING STYLES (UNCHANGED) */
-    .masonry {
-      column-count: 3;
-      column-gap: 12px;
+    .brand-link {
+      max-width: 230px;
+      aspect-ratio: 888 / 475;
+      margin-bottom: 1.5rem;
+      display: block;
     }
 
-    .masonry img {
+    .brand-photo {
+      position: relative;
       width: 100%;
-      margin-bottom: 12px;
+      height: 100%;
+    }
+
+    .brand-photo img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      transition: opacity 0.3s;
+    }
+
+    .photo-hover { opacity: 0; }
+
+    .brand-link:hover .photo-hover { opacity: 1; }
+    .brand-link:hover .photo-default { opacity: 0; }
+
+    .tagline {
+      font-family: 'Six Hands Rough', serif;
+      font-size: 2.2rem;
+      line-height: 1;
+      margin-bottom: 2rem;
+    }
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .nav a {
+      font-family: 'Six Hands Rough', serif;
+      font-size: 3.1rem;
+      line-height: 1;
       display: block;
-      break-inside: avoid;
     }
 
     .main {
@@ -88,9 +120,8 @@
     .back-link {
       font-family: 'Six Hands Rough', serif;
       font-size: 1.8rem;
-      line-height: 1;
-      display: inline-block;
       margin-bottom: 2rem;
+      display: inline-block;
       color: var(--selected-green);
     }
 
@@ -100,47 +131,56 @@
       margin-bottom: 2.5rem;
     }
 
-    /* ✅ FIXED: scoped nav so it doesn't affect sidebar */
-  .gallery {
-  position: relative;
-  width: 100%;
-  max-width: none;   /* removes the 520px limit */
-  text-align: center;
-}
+    .project-title {
+      font-size: clamp(2.6rem, 6vw, 5.5rem);
+      line-height: 0.95;
+      margin: 0 0 1rem;
+    }
 
-.frame img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  display: block;
-}
+    .project-meta {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-description {
+      font-size: 1.25rem;
+      max-width: 760px;
+    }
+
+    /* =========================
+       FIXED FULL WIDTH GALLERY
+    ========================= */
+
+    .gallery {
+      position: relative;
+      width: 100%;
+    }
 
     .frame img {
       width: 100%;
       border-radius: 12px;
-      display: block;
     }
 
-   .gallery button.nav {
-  position: absolute;
-  top: 45%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.4);
-  color: white;
-  border: none;
-  font-size: 28px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  padding: 0;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-    .prev { left: -20px; }
-    .next { right: -20px; }
+    .gallery button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.4);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .prev { left: 20px; }
+    .next { right: 20px; }
 
     .previews {
       display: flex;
@@ -153,6 +193,27 @@
       opacity: 0.35;
       border-radius: 8px;
     }
+
+    /* mobile fix */
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid black;
+      }
+
+      .nav {
+        flex-direction: row;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+    }
+
   </style>
 </head>
 
@@ -160,10 +221,11 @@
 <div class="layout">
 
   <aside class="sidebar">
+
     <a href="../index.html#home" class="brand-link">
       <div class="brand-photo">
-        <img class="photo-default" src="../images/noran-1.png" alt="Noran Morsi">
-        <img class="photo-hover" src="../images/noran-2.png" alt="logo">
+        <img class="photo-default" src="../images/noran-1.png">
+        <img class="photo-hover" src="../images/noran-2.png">
       </div>
     </a>
 
@@ -176,55 +238,44 @@
       <a href="../index.html#about">About</a>
       <a href="../index.html#contact">Contact</a>
     </nav>
+
   </aside>
 
   <main class="main">
+
     <a href="../index.html#home" class="back-link">← Back to projects</a>
 
     <header class="project-header">
       <h1 class="project-title">Illustrating for The Drew Barrymore Show</h1>
-
       <div class="project-meta">Illustration • 2025</div>
-
       <p class="project-description">
-        As an Editorial Production Assistant for The Drew Barrymore Show Season 4 & 5,
-        I was given the opportunity to specially design an illustration for a studio background
-        for a glow-up makeover for a first date segment!
+        As an Editorial Production Assistant, I created an illustration for a studio background for a glow-up makeover segment.
       </p>
     </header>
 
     <section class="project-section">
 
       <div class="gallery">
-        <button class="nav prev" onclick="changeImage(-1)">‹</button>
+        <button class="prev" onclick="changeImage(-1)">‹</button>
 
         <div class="frame">
-          <img id="mainImage" />
+          <img id="mainImage">
         </div>
 
-        <button class="nav next" onclick="changeImage(1)">›</button>
+        <button class="next" onclick="changeImage(1)">›</button>
 
         <div class="previews">
-          <img id="prevImg" />
-          <img id="nextImg" />
+          <img id="prevImg">
+          <img id="nextImg">
         </div>
       </div>
 
     </section>
+
   </main>
 </div>
 
-<!-- ONLY FIXED SCRIPT -->
 <script>
-const links = document.querySelectorAll('a');
-
-links.forEach(link => {
-  link.addEventListener('click', () => {
-    links.forEach(l => l.classList.remove('clicked-link'));
-    link.classList.add('clicked-link');
-  });
-});
-
 const images = [
   "../images/tdbs/image1.jpg",
   "../images/tdbs/image2.jpg",
