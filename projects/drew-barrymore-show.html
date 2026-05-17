@@ -74,6 +74,18 @@
       flex-direction: column;
     }
 
+    .masonry {
+  column-count: 3;      /* number of columns */
+  column-gap: 12px;
+}
+
+.masonry img {
+  width: 100%;
+  margin-bottom: 12px;
+  display: block;
+  break-inside: avoid;
+}
+
     .brand-link {
       max-width: 230px;
       aspect-ratio: 888 / 475;
@@ -405,7 +417,7 @@ grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 
     <section class="project-section">
   
-        <div class="photo-grid">
+        <div class="masonry">
         <img src="../images/tdbs/image1.jpg" alt="">
              <img src="../images/tdbs/image2.jpg" alt="">
              <img src="../images/tdbs/image3.jpg" alt="">
