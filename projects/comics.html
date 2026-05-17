@@ -242,7 +242,31 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0.35rem;
     }
+.book {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
 
+.page img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+}
+
+.page-number {
+  margin-top: 8px;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.book button {
+  margin: 10px;
+  padding: 8px 12px;
+  border: 1px solid black;
+  background: white;
+  cursor: pointer;
+}
     .related-card {
       position: relative;
       overflow: hidden;
@@ -393,14 +417,16 @@
     </header>
 
     <section class="project-section">
-      <div class="image-full">
-        <img src="../images/comics/1.png">
-           <img src="../images/comics/2.png">
-           <img src="../images/comics/3.png">
-           <img src="../images/comics/4.png">
-           <img src="../images/comics/5.png">
-       
-      </div>
+    <div class="book">
+  <button onclick="prevPage()">‹ Prev</button>
+
+  <div class="page">
+    <img id="pageImage" />
+    <div class="page-number" id="pageNumber"></div>
+  </div>
+
+  <button onclick="nextPage()">Next ›</button>
+</div>
 
     
     </section>
@@ -444,6 +470,33 @@ links.forEach(link => {
     link.classList.add('clicked-link');
   });
 });
+  const pages = [
+  ".../images/comics/1.png",
+  "../images/comics/2.png",
+  "../images/comics/3.png",
+  "../images/comics/4.png",
+    ../images/comics/5.png
+];
+
+let currentPage = 0;
+
+function renderPage() {
+  document.getElementById("pageImage").src = pages[currentPage];
+  document.getElementById("pageNumber").innerText =
+    `Page ${currentPage + 1} / ${pages.length}`;
+}
+
+function nextPage() {
+  if (currentPage < pages.length - 1) currentPage++;
+  renderPage();
+}
+
+function prevPage() {
+  if (currentPage > 0) currentPage--;
+  renderPage();
+}
+
+renderPage();
 </script>
 
 </body>
