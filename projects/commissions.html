@@ -126,6 +126,31 @@
       display: block;
     }
 
+    .masonry-gallery {
+  column-count: 3;
+  column-gap: 12px;
+  width: 100%;
+}
+
+/* images flow vertically in columns */
+.masonry-gallery img {
+  width: 100%;
+  margin-bottom: 12px;
+  display: block;
+  break-inside: avoid;
+  border-radius: 8px; /* optional but nice for portfolios */
+}
+@media (max-width: 1000px) {
+.masonry-gallery {
+column-count: 2;
+}
+}
+
+@media (max-width: 600px) {
+.masonry-gallery {
+column-count: 1;
+}
+}
     .social-links {
       margin-top: 1.5rem;
       display: flex;
@@ -392,7 +417,7 @@
       </p>
     </header>
 
-    <section class="project-section">
+ <section class="masonry-gallery">
       <div class="image-full">
         <img src="../images/commissions/image1.jpg" >
          <img src="../images/commissions/image2.jpg" >
